@@ -1,0 +1,123 @@
+<%- include("../admin/partials/head.ejs",{page:'categories'}); -%>
+<%- include("../admin/addcategory.ejs"); -%>
+<%- include("../admin/editcategory.ejs"); -%>
+<%- include("../admin/deletepopup.ejs"); -%>
+<div class="w-full">
+
+    <script src="/javascript/admin/category.js"></script>
+    <div class="flex justify-between">
+        <div class="">
+            <span class="text-3xl font-semibold ">Categories</span>
+            <span class="text-xs ml-6 text-[#00000080]"><%= list.length %> categories found</span>
+        </div>
+        
+    </div>
+    
+    <div class="flex gap-2 justify-between mb-2 mt-4">
+        <div onclick="categoryPopup()" class="border-2 flex justify-center items-center px-3 gap-2 rounded-md py-2">
+            <span class="material-symbols-outlined text-gray-500">
+                add
+            </span>
+            <span class="text-gray-500">Add New Category</span>
+        </div>
+        <div class="flex gap-3">
+            <div class="flex items-center ">
+
+                <select onchange="filterCategory(this)" class="border-2 rounded-md py-2 bg-inherit text-gray-500 px-8" name="category-filter" id="category-filter">
+                    <option class="text-gray-500" value="Filter By">Filter By</option>
+                    <option value="All">All</option>
+                    <option value="Listed">Listed</option>
+                    <option value="Unlisted">Unlisted</option>
+                </select>
+
+            </div>
+            <div class="rounded-md bg-transparent border-gray-200 border-2 flex">
+                <input id="category_search" name="category_search" class="bg-transparent pl-4 outline-none w-80" type="text" placeholder="Search Category...">
+                <button onclick="searchCategory()" class="bg-[#1a91ff] flex justify-center items-center p-2 ">
+                    <span class="material-symbols-outlined text-white">search</span>
+                </button>
+            </div>
+        </div>
+        
+            
+            
+    </div>
+    <!-- table -->
+<table class="w-full border-separate border-spacing-y-3" >
+    <tr class="text-left border-b-2 ">
+        <th class="text-[#00000070] border-b-[1px] border-slate-300 mr-2 pb-2">
+            <span class="">#</span>
+        </th>
+        <th class="text-[#00000070] border-b-[1px] border-slate-300 ">
+            <div class="flex justify-between items-center mx-2">
+                <span class="">ID</span>
+                <div class="flex flex-col">
+                    <button onclick="sortCategory(this)" id="ct-sort-id-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_less
+                    </button>
+                    <button onclick="sortCategory(this)" id="ct-sort-id-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_more
+                    </button>
+                </div>
+            </div>
+            
+        </th>
+        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+            <div class="flex justify-between items-center mx-2">
+                <span class="">Sub Category</span>
+                <div class="flex flex-col">
+                    <button onclick="sortCategory(this)" id="ct-sort-category-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_less
+                    </button>
+                    <button onclick="sortCategory(this)" id="ct-sort-category-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_more
+                    </button>
+                </div>
+                
+            </div>
+            
+        </th>
+        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+            <div class="flex justify-between items-center mx-2">
+                <span>Category</span>
+                
+            </div>
+           
+        </th>
+        
+        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+            <div class="flex justify-between items-center mx-2">
+                <span class="mr-2">Products</span>
+                <div class="flex flex-col">
+                    <button onclick="sortCategory(this)" id="ct-sort-product-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_less
+                    </button>
+                    <button onclick="sortCategory(this)" id="ct-sort-product-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_more
+                    </button>
+                </div>
+            </div>
+            
+        </th>
+        <th class="text-[#00000070] border-b-[1px] border-slate-300 w-24">
+            <div class="flex justify-between items-center mx-2 w-24">
+                <span class="mr-2">Status</span>
+            </div>
+            
+        </th>
+        
+        <th class="text-[#00000070] border-b-[1px] border-slate-300 mx-2">Action</th>
+    </tr>
+
+    <tbody id="table-container">
+        <%-include('../admin/partials/tabledata-categories.ejs')%>
+    </tbody>
+
+    
+    
+    
+</table>
+    
+    
+</div>
+<%- include("../admin/partials/footer.ejs"); -%>
