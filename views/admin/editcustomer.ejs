@@ -1,0 +1,59 @@
+<div id="editcustomer" class="transition ease-out duration-3000 w-full justify-center items-center hidden fixed inset-0 z-50 bg-[rgba(0,0,0,0.2)]">
+    <div class="w-full ">
+        <div class="w-full flex justify-center items-center ">
+            
+            <div class="bg-white w-2/5 p-6 rounded-sm mt-3 overflow-scroll relative">
+                <div class="border-b-2 pb-2 w-max">
+                    <span class="text-xl font-semibold ">Update Customer Data</span>
+                    
+                </div>
+                <form action="/admin/editcustomer" method="post">
+                    <input class="border rounded-md p-2 w-full" type="hidden" name="id" id="edit-customer-id" readonly>
+                    <div class="w-full gap-4 space-y-5 mt-4">
+                        <div class="w-full flex gap-6 justify-between">
+                            <label class="block my-2 text-[#00000080]" for="">Name</label>
+                            <input class="border rounded-md p-2 w-full" type="text" name="edit_customer_name" id="edit-customer-name" readonly>
+                            
+                        </div>
+                        <div class="w-full flex gap-6 justify-between">
+                            <label class="block my-2 text-[#00000080]" for="">Phone</label>
+                            <input class="border rounded-md p-2 w-full" type="text" name="edit_customer_phone" id="edit-customer-phone" readonly>
+                            
+                        </div>
+                        <div class="w-full flex gap-6 justify-between">
+                            <label class="block my-2 text-[#00000080]" for="">Email</label>
+                            <input class="border rounded-md p-2 w-full" type="text" name="edit_customer_email" id="edit-customer-email" readonly>
+                            
+                        </div>
+                        <div class="w-full flex gap-6 justify-between">
+                            <label class="block my-2 text-[#00000080]" for="">Status</label>
+                            <select class="border rounded-md p-2 w-full" name="edit_customer_status" id="edit-customer-status">
+                                <option value="Active">Active</option>
+                                <option value="Blocked">Blocked</option>
+                            </select>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    
+
+                    <div class="flex justify-end mt-6">
+                        <button type="submit" value="submit" class="rounded-md bg-blue-500 text-white text-sm p-3 w-1/2">
+                            Update Details
+                        </button>
+                    </div>
+                    
+                </form>
+                <button type="button" onclick="productPopupEdit()" class=" material-symbols-outlined h-[30px] w-[30px] rounded-full text-gray-500 border-gray-500 border-2 absolute top-5 right-5">
+                    close
+                </button>
+            </div>
+            
+                
+                
+            
+        </div>
+    </div>
+    
+</div>

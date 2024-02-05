@@ -1,0 +1,128 @@
+<%- include("../admin/partials/head.ejs",{page:'customers'}); -%>
+<%- include("../admin/deletecustomer.ejs"); -%>
+<%- include("../admin/editcustomer.ejs"); -%>
+<div class="w-full">
+    <div class="">
+        <span class="text-3xl font-semibold ">Customers</span>
+        <span class="text-xs ml-6 text-[#00000080]"><%= list.length%> customers found</span>
+    </div>
+    <script src="/javascript/admin/customers.js"></script>
+    <div class="flex gap-3 justify-end">
+        <div class="flex items-center ">
+
+            <select onchange="filterCustomer(this)" class="border-2 rounded-md py-2 bg-inherit text-gray-500 px-8" name="product-filter" id="product-filter">
+                <option class="text-gray-500" value="Filter By">Filter By</option>
+                <option value="All">All</option>
+                <option value="Active">Active</option>
+                <option value="Blocked">Blocked</option>
+            </select>
+
+        </div>
+        <div class="rounded-md bg-transparent border-gray-200 border-2 flex">
+            <select id="customer_search_type" class="pl-3 bg-inherit" name="customer_search_type">
+                <option value="name">Name</option>
+                <option value="phone">Phone</option>
+                <option value="email">Email</option>
+            </select>
+            <input id="customer_search" name="customer_search" class="bg-transparent pl-4 outline-none w-80" type="text" placeholder="Search...">
+            <button onclick="searchCustomer()" class="bg-[#1a91ff] flex justify-center items-center p-2 ">
+                <span class="material-symbols-outlined text-white">search</span>
+            </button>
+        </div>
+    </div>
+    <!-- table -->
+    <table class="w-full border-separate border-spacing-y-3" >
+        <tr class="text-left border-b-2 ">
+            <th class="text-[#00000070] border-b-[1px] border-slate-300 mr-2">
+                <span class="">#</span>
+            </th>
+            <th class="text-[#00000070] border-b-[1px] border-slate-300">
+                <div class="flex justify-between items-center mx-2">
+                    <span class="">ID</span>
+                    <div class="flex flex-col">
+                        <button onclick="sortCustomer(this)" id="cs-sort-id-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                            expand_less
+                        </button>
+                        <button onclick="sortCustomer(this)" id="cs-sort-id-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                            expand_more
+                        </button>
+                    </div>
+                </div>
+                
+            </th>
+            <th class="text-[#00000070] border-b-[1px] border-slate-300 ">
+                <div class="flex justify-between items-center mx-2">
+                    <span class="">Phone</span>
+                </div>
+                
+            </th>
+            <th class="text-[#00000070] border-b-[1px] border-slate-300">
+                <div class="flex justify-between items-center mx-2">
+                    <span class="">Name</span>
+                    <div class="flex flex-col">
+                        <button onclick="sortCustomer(this)" id="cs-sort-name-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                            expand_less
+                        </button>
+                        <button onclick="sortCustomer(this)" id="cs-sort-name-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                            expand_more
+                        </button>
+                    </div>
+                </div>
+                
+            </th>
+            <th class="text-[#00000070] border-b-[1px] border-slate-300">
+                <div class="flex justify-between items-center mx-2 w-max">
+                    <span>Email</span>
+                    <div class="flex flex-col">
+                        <button onclick="sortCustomer(this)" id="cs-sort-email-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                            expand_less
+                        </button>
+                        <button onclick="sortCustomer(this)" id="cs-sort-email-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                            expand_more
+                        </button>
+                    </div>
+                </div>
+               
+            </th>
+            <th class="text-[#00000070] border-b-[1px] border-slate-300 ">
+                <div class="flex justify-between items-center mx-2 w-max">
+                    <span class="mr-2">Joined Date</span>
+                    
+                </div>
+                
+            </th>
+            <th class="text-[#00000070] border-b-[1px] border-slate-300">
+                <div class="flex justify-between items-center mx-2">
+                    <span class="mr-2">Purchases</span>
+                    <div class="flex flex-col">
+                        <button onclick="sortCustomer(this)" id="cs-sort-purchase-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                            expand_less
+                        </button>
+                        <button onclick="sortCustomer(this)" id="cs-sort-purchase-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                            expand_more
+                        </button>
+                    </div>
+                </div>
+                
+            </th>
+            <th class="text-[#00000070] border-b-[1px] border-slate-300 ">
+                <div class="flex justify-between items-center mx-2">
+                    <span class="mr-2">Status</span>
+                </div>
+                
+            </th>
+            
+            <th class="text-[#00000070] border-b-[1px] border-slate-300 mx-2">Action</th>
+        </tr>
+
+        <tbody id="table-container">
+            <%-include('../admin/partials/tabledata-customers.ejs')%>
+        </tbody>
+        
+        
+        
+        
+    </table>
+    
+</div>
+<%- include("../admin/partials/footer.ejs"); -%>
