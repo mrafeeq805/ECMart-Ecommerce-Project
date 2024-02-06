@@ -1,0 +1,166 @@
+<%- include("C:/Users/muham/Desktop/Ecommerce/views/admin/partials/head.ejs",{page:'products'}); -%>
+<%- include("C:/Users/muham/Desktop/Ecommerce/views/admin/addproduct.ejs",{category:category}); -%>
+<%- include("C:/Users/muham/Desktop/Ecommerce/views/admin/editproduct.ejs"); -%>
+<%- include("C:/Users/muham/Desktop/Ecommerce/views/admin/deleteproduct.ejs"); -%>
+<div class="w-full">
+
+    <script src="/javascript/admin/products.js"></script>
+    <div class="flex justify-between">
+        <div class="">
+            <span class="text-3xl font-semibold ">Products</span>
+            <span class="text-xs ml-6 text-[#00000080]"><%= list.length %> products found</span>
+        </div>
+        
+    </div>
+    
+    <div class="flex gap-2 justify-between mb-2 mt-4">
+        <div onclick="productPopup()" class="border-2 flex justify-center items-center px-3 gap-2 rounded-md py-2">
+            <span class="material-symbols-outlined text-gray-500">
+                add
+            </span>
+            <span class="text-gray-500">Add New Product</span>
+        </div>
+        <div class="flex gap-3">
+            <div class="flex items-center ">
+
+                <select onchange="filterProduct(this)" class="border-2 rounded-md py-2 bg-inherit text-gray-500 px-8" name="category-filter" id="category-filter">
+                    <option class="text-gray-500" value="Filter By">Filter By</option>
+                    <option value="All">All</option>
+                    <option value="In Stock">In Stock</option>
+                    <option value="Out of Stock">Out of Stock</option>
+                </select>
+
+            </div>
+            <div class="rounded-md bg-transparent border-gray-200 border-2 flex">
+                <select id="product_search_type" class="pl-3 bg-inherit" name="product_search_type">
+                    <option value="title">Name</option>
+                    <option value="seller">Seller</option>
+                    <option value="category">Category</option>
+                </select>
+                <input id="product_search" name="category_search" class="bg-transparent pl-4 outline-none w-80" type="text" placeholder="Search...">
+                <button onclick="searchProduct()" class="bg-[#1a91ff] flex justify-center items-center p-2 ">
+                    <span class="material-symbols-outlined text-white">search</span>
+                </button>
+            </div>
+        </div>
+        
+            
+            
+    </div>
+    <!-- table -->
+<table class="w-full border-separate border-spacing-y-3" >
+    <tr class="text-left border-b-2 ">
+        <th class="text-[#00000070] border-b-[1px] border-slate-300 mr-2 pb-2">
+            <span class="">#</span>
+        </th>
+        <th class="text-[#00000070] border-b-[1px] border-slate-300 ">
+            <div class="flex justify-between items-center mx-2">
+                <span class="">ID</span>
+                <div class="flex flex-col">
+                    <button onclick="sortProduct(this)" id="pt-sort-id-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_less
+                    </button>
+                    <button onclick="sortProduct(this)" id="pt-sort-id-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_more
+                    </button>
+                </div>
+            </div>
+            
+        </th>
+        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+            <div class="flex justify-between items-center mx-2">
+                <span class="">Product Name</span>
+                <div class="flex flex-col">
+                    <button onclick="sortProduct(this)" id="pt-sort-name-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_less
+                    </button>
+                    <button onclick="sortProduct(this)" id="pt-sort-name-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_more
+                    </button>
+                </div>
+                
+            </div>
+            
+        </th>
+        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+            <div class="flex justify-between items-center mx-2">
+                <span class="">Category</span>
+                <div class="flex flex-col">
+                    <button onclick="sortProduct(this)" id="pt-sort-category-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_less
+                    </button>
+                    <button onclick="sortProduct(this)" id="pt-sort-category-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_more
+                    </button>
+                </div>
+                
+            </div>
+            
+        </th>
+        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+            <div class="flex justify-between items-center mx-2">
+                <span class="">Qty</span>
+                <div class="flex flex-col">
+                    <button onclick="sortProduct(this)" id="pt-sort-qty-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_less
+                    </button>
+                    <button onclick="sortProduct(this)" id="pt-sort-qty-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_more
+                    </button>
+                </div>
+                
+            </div>
+            
+        </th>
+        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+            <div class="flex justify-between items-center mx-2">
+                <span class="">Price</span>
+                <div class="flex flex-col">
+                    <button onclick="sortProduct(this)" id="pt-sort-price-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_less
+                    </button>
+                    <button onclick="sortProduct(this)" id="pt-sort-price-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_more
+                    </button>
+                </div>
+                
+            </div>
+            
+        </th>
+        
+        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+            <div class="flex justify-between items-center mx-2">
+                <span class="mr-2">Seller</span>
+                <div class="flex flex-col">
+                    <button onclick="sortProduct(this)" id="pt-sort-seller-asc" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_less
+                    </button>
+                    <button onclick="sortProduct(this)" id="pt-sort-seller-des" class="material-symbols-outlined text-black h-4 flex justify-center items-center text-xl">
+                        expand_more
+                    </button>
+                </div>
+            </div>
+            
+        </th>
+        <th class="text-[#00000070] border-b-[1px] border-slate-300 w-24">
+            <div class="flex justify-between items-center mx-2 w-24">
+                <span class="mr-2">Status</span>
+            </div>
+            
+        </th>
+        
+        <th class="text-[#00000070] border-b-[1px] border-slate-300 mx-2">Action</th>
+    </tr>
+
+    <tbody id="table-container">
+        <%-include('../admin/partials/tabledata-products.ejs')%>
+    </tbody>
+
+    
+    
+    
+</table>
+    
+    
+</div>
+<%- include("C:/Users/muham/Desktop/Ecommerce/views/admin/partials/footer.ejs"); -%>

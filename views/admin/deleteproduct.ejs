@@ -1,0 +1,43 @@
+
+<div id="delete" class="transition ease-out duration-3000 w-full justify-center hidden items-center fixed inset-0 z-50 bg-[rgba(0,0,0,0.2)]">
+    <div  class="w-full flex justify-center items-center ">
+
+        
+        <div class="bg-white w-2/5 p-6 mt-3 relative rounded-lg">
+            <div class="border-b-2 w-full pb-2 ">
+                <span class="text-xl font-semibold ">Delete Product</span>
+                
+            </div>
+            <script src="/javascript/admin/products.js"></script>
+            <div class=" w-full mt-8">
+                <span class="text-gray-500 text-lg block">Are you sure want to delete category <span id="display-id">(id=)?</span></span>
+                <span class="text-gray-500 text-lg ">It cannot be restored</span>
+                
+            </div>
+            
+            <form action="/admin/deleteproduct" method="post">
+                <input id="delete-product-id" name="id" type="hidden">
+                
+                <div class="flex justify-end mt-6 gap-8">
+                    <button type="button" onclick="deletePopup()" class="rounded-full border-gray-300 border-[1px] text-gray-500 p-3 w-1/2">
+                       Cancel
+                    </button>
+                    <button type="submit" value="submit" class="rounded-full bg-red-500 text-white p-3 w-1/2">
+                        Delete
+                    </button>
+                    
+                </div>
+                
+            </form>
+            <button type="button" onclick="deletePopup()" class=" material-symbols-outlined  text-gray-500  absolute top-5 right-5">
+                close
+            </button>
+            
+        </div>
+        
+            
+            
+        
+    </div>
+</div>
+
