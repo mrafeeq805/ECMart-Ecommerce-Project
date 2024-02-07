@@ -1,0 +1,154 @@
+<div id="showorder" class="transition ease-out duration-3000 hidden w-full justify-center items-center fixed inset-0 z-50 bg-[rgba(0,0,0,0.2)]">
+    <div class="w-full ">
+        <div class="w-full flex justify-center items-center ">
+            
+            <div class="bg-white w-9/12 p-6 rounded-sm mt-3 overflow-scroll relative">
+                <div class="border-b-2 pb-2 w-max">
+                    <span class="text-xl font-semibold ">Order Details</span>
+                    
+                </div>
+                <form action="/admin/editorder" method="post">
+                    
+                    <div class="grid grid-cols-2 gap-5">
+
+                        <!-- address -->
+
+                        <div class="bg-gray-100 space-y-2 my-3 p-5">
+
+                            <h1 class="text-lg font-bold">Address</h1>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">Name</span>
+                                <span id="order-name">Muhammed Rafeeq</span>
+                            </div>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">Phone</span>
+                                <span id="order-phone">Muhammed Rafeeq</span>
+                            </div>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">Building</span>
+                                <span id="order-building">Muhammed Rafeeq</span>
+                            </div>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">Area</span>
+                                <span id="order-area">Muhammed Rafeeq</span>
+                            </div>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">City</span>
+                                <span id="order-city">Muhammed Rafeeq</span>
+                            </div>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">State</span>
+                                <span id="order-state">Muhammed Rafeeq</span>
+                            </div>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">Pincode</span>
+                                <span id="order-pin">Muhammed Rafeeq</span>
+                            </div>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">Landmark</span>
+                                <span id="order-landmark">Muhammed Rafeeq</span>
+                            </div>
+
+                        </div>
+
+                        <!-- products -->
+
+                        <div class="bg-gray-100 space-y-2 my-3 p-5">
+
+                            <h1 class="text-lg font-bold">Products</h1>
+                            <div id="container" class="flex flex-col gap-3 w-full md:gap-4 md:w-full">
+  
+                            </div>
+                            
+
+                        </div>
+
+                        <!-- payment details -->
+
+                        <div class="bg-gray-100 space-y-2 my-3 p-5">
+
+                            <h1 class="text-lg font-bold">Payment Summary</h1>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">Payment Method</span>
+                                <span class="uppercase" id="order-payment-method">Muhammed Rafeeq</span>
+                            </div>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">Shipping Charge</span>
+                                <span id="order-shipping-charge">Muhammed Rafeeq</span>
+                            </div>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">Discount</span>
+                                <span id="order-discount">Muhammed Rafeeq</span>
+                            </div>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">Total</span>
+                                <span id="order-total">Muhammed Rafeeq</span>
+                            </div>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">Phone</span>
+                                <span id="order-ph">Muhammed Rafeeq</span>
+                            </div>
+                            <div class="flex justify-between ">
+                                <span class="text-gray-500">Created On</span>
+                                <span id="order-created">Muhammed Rafeeq</span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- status update -->
+
+                        <div class="bg-gray-100 space-y-2 my-3 p-5">
+
+                            <h1 class="text-lg font-bold">Status Update</h1>
+                            <div class="flex gap-7 ">
+                                <span class="text-gray-500">Order Status</span>
+                                <input type="hidden" name="orderupdate" id="orderupdate">
+                                <input type="hidden" name="id" id="orderid">
+                                <div class="w-max flex flex-col gap-2">
+                                    <div>
+                                        <input onchange="changeStatus('Processing')" type="radio" name="order-status" id="">
+                                        <label for="">Processing</label>
+                                    </div>
+                                    <div>
+                                        <input onchange="changeStatus('Delivered')" type="radio" name="order-status" id="">
+                                        <label for="">Delivered</label>
+                                    </div>
+                                    <div>
+                                        <input onchange="changeStatus('Out Of Delivery')" type="radio" name="order-status" id="">
+                                        <label for="">Out Of Delivery</label>
+                                    </div>
+                                    <div>
+                                        <input onchange="changeStatus('Shipped')" type="radio" name="order-status" id="">
+                                        <label for="">Shipped</label>
+                                    </div>
+                                    <div>
+                                        <input onchange="changeStatus('Cancelled')" type="radio" name="order-status" id="">
+                                        <label for="">Cancelled</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+
+                    </div>
+                    <div class="flex justify-end mt-6">
+                        <button type="submit" value="submit"  class="rounded-md bg-blue-500 text-white text-sm p-3 w-1/2">
+                            Update Details
+                        </button>
+                    </div>
+                    
+                </form>
+                <button type="button" onclick="closePopup()" class=" material-symbols-outlined h-[30px] w-[30px] rounded-full text-gray-500 border-gray-500 border-2 absolute top-5 right-5">
+                    close
+                </button>
+            </div>
+            
+                
+                
+            
+        </div>
+    </div>
+    
+</div>
