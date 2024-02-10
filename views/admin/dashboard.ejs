@@ -1,0 +1,429 @@
+<%- include("../admin/partials/head.ejs",{page:'dashboard'}); -%>
+
+<div class="w-full">
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <div class="space-y-5">
+        <div class="">
+            <span class="text-3xl font-semibold ">Dashboard</span>
+            
+        </div>
+        <div class="grid grid-cols-4 gap-4">
+            <div class="flex bg-white p-3 gap-4 items-center">
+                <div class="h-[65px] w-[65px] bg-yellow-100 rounded-full flex justify-center items-center">
+                    <div class="h-[50px] w-[50px] bg-yellow-400 rounded-full flex justify-center items-center">
+                        <span class="material-symbols-outlined text-white text-lg">
+                            currency_exchange
+                        </span>
+                    </div>
+
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-gray-500">Total Sales</span>
+                    <span class="font-bold">₹<%= details.sales %></span>
+                </div>
+            </div>
+            <div class="flex bg-white p-3 gap-4 items-center">
+                <div class="h-[65px] w-[65px] bg-pink-100 rounded-full flex justify-center items-center">
+                    <div class="h-[50px] w-[50px] bg-pink-500 rounded-full flex justify-center items-center">
+                        <span class="material-symbols-outlined text-white text-lg">
+                            currency_exchange
+                        </span>
+                    </div>
+
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-gray-500">Total Orders</span>
+                    <span class="font-bold"><%= details.orders %></span>
+                </div>
+            </div>
+            <div class="flex bg-white p-3 gap-4 items-center">
+                <div class="h-[65px] w-[65px] bg-violet-100 rounded-full flex justify-center items-center">
+                    <div class="h-[50px] w-[50px] bg-violet-500 rounded-full flex justify-center items-center">
+                        <span class="material-symbols-outlined text-white text-lg">
+                            currency_exchange
+                        </span>
+                    </div>
+
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-gray-500">Total Products</span>
+                    <span class="font-bold"><%= details.products %></span>
+                </div>
+            </div>
+            <div class="flex bg-white p-3 gap-4 items-center">
+                <div class="h-[65px] w-[65px] bg-green-100 rounded-full flex justify-center items-center">
+                    <div class="h-[50px] w-[50px] bg-green-500 rounded-full flex justify-center items-center">
+                        <span class="material-symbols-outlined text-white text-lg">
+                            currency_exchange
+                        </span>
+                    </div>
+
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-gray-500">Total Customers</span>
+                    <span class="font-bold"><%= details.customers %></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="flex gap-4 ">
+            <div class=" w-7/12 bg-white p-4 md:p-6">
+
+                <div class="flex justify-between mb-3">
+                    <div class="flex justify-center items-center">
+                        <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white pe-1">Sales Analytics</h5>
+                        
+                    </div>
+
+                </div>
+
+                <div id="column-chart"></div>
+                
+            </div>
+            <!-- charts -->
+            <div class="w-5/12 bg-white  p-4 md:p-6">
+  
+                <div class="flex justify-between mb-3">
+                    <div class="flex justify-center items-center">
+                        <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white pe-1">Website traffic</h5>
+                        
+                    </div>
+
+                </div>
+              
+            
+              
+                <!-- Donut Chart -->
+                <div class="py-6" id="donut-chart"></div>
+              
+                
+            </div>
+
+        </div>
+                    <!-- top orders -->
+            <div>
+                <h1 class="text-lg font-medium">Latest Orders</h1>
+                <table class="w-full border-separate border-spacing-y-3" >
+                    <tr class="text-left border-b-2 ">
+                        <th class="text-[#00000070] border-b-[1px] border-slate-300 mr-2">
+                            <span class="">#</span>
+                        </th>
+                        <th class="text-[#00000070] border-b-[1px] border-slate-300 ">
+                            <div class="flex justify-between items-center mx-2 w-max">
+                                <span class="">Order ID</span>
+                                
+                            </div>
+                            
+                        </th>
+                        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+                            <div class="flex justify-between items-center mx-2">
+                                <span class="">Product Name</span>
+                                
+                            </div>
+                            
+                        </th>
+                        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+                            <div class="flex justify-between items-center mx-2">
+                                <span>Phone</span>
+                                
+                            </div>
+                           
+                        </th>
+                        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+                            <div class="flex justify-between items-center mx-2">
+                                <span class="mr-2">Date</span>
+                            
+                            </div>
+                            
+                        </th>
+                        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+                            <div class="flex justify-between items-center mx-2">
+                                <span class="mr-2">Price</span>
+                                
+                            </div>
+                            
+                        </th>
+                        <th class="text-[#00000070] border-b-[1px] border-slate-300">
+                            <div class="flex justify-between items-center mx-2">
+                                <span class="mr-2">Status</span>
+                                
+                            </div>
+                            
+                        </th>
+                        
+                        
+                    </tr>
+                    
+                    <% list.forEach((data,index)=>{ %>
+
+    
+    
+                        <tr class="border-b-2 border-spacing-3 ">
+                            <td class="text-[#00000070] border-b-[1px] border-slate-300 mx-2 w-10"><%= index+1  %></td>
+                            <td class="text-[#00000070] border-b-[1px] border-slate-300 mx-2 w-10"><%= data.order_id  %></td>
+                            <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2"><%= data.products[0].title %></td>
+                            
+                            <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2"><%= data.phone %></td>
+                            
+                            <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-10"><%= data.date %></td>
+                            <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-16">₹<%= data.total%>.00</td>
+                            <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-16">
+                                <% if(data.status=='Delivered') {%>
+                                    <div class="rounded-full bg-green-100 p-[2px] flex justify-center items-center px-3">
+                                        <span class="text-green-500 text-sm"><%= data.status %></span>
+                                    </div>
+                                    
+                                <% } else if (data.status=='Cancelled') {%>
+                                    <div class="rounded-full bg-red-100 p-[2px] flex justify-center items-center px-3">
+                                        <span class="text-red-500 text-sm"><%= data.status %></span>
+                                    </div>
+                                <% } else if (data.status=='Shipped') {%>
+                                    <div class="rounded-full bg-violet-100 p-[2px] flex justify-center items-center px-3">
+                                        <span class="text-violet-500 text-sm"><%= data.status %></span>
+                                    </div>
+                                <% } else if (data.status=='Out Of Delivery') {%>
+                                    <div class="rounded-full bg-orange-100 p-[2px] flex justify-center items-center px-3">
+                                        <span class="text-orange-500 text-sm"><%= data.status %></span>
+                                    </div>
+                                <% } else if (data.status=='Processing') {%>
+                                    <div class="rounded-full bg-blue-100 p-[2px] flex justify-center items-center px-3">
+                                        <span class="text-blue-500 text-sm"><%= data.status %></span>
+                                    </div>
+                                <% }  %>
+                    
+                            </td>
+                            
+
+                        </tr>
+                     <% }) %>
+                    
+                    
+                </table>
+            </div>
+        
+        
+  
+        <script>
+            // ApexCharts options and config
+            window.addEventListener("load", function() {
+                const getChartOptions = () => {
+        return {
+          series: [35.1, 23.5, 2.4, 5.4],
+          colors: ["#1C64F2", "#16BDCA", "#FDBA8C", "#E74694"],
+          chart: {
+            height: 250,
+            width: "100%",
+            type: "donut",
+          },
+          stroke: {
+            colors: ["transparent"],
+            lineCap: "",
+          },
+          plotOptions: {
+            pie: {
+              donut: {
+                labels: {
+                  show: true,
+                  name: {
+                    show: true,
+                    fontFamily: "Inter, sans-serif",
+                    offsetY: 20,
+                  },
+                  total: {
+                    showAlways: true,
+                    show: true,
+                    label: "Unique visitors",
+                    fontFamily: "Inter, sans-serif",
+                    formatter: function (w) {
+                      const sum = w.globals.seriesTotals.reduce((a, b) => {
+                        return a + b
+                      }, 0)
+                      return `${sum}k`
+                    },
+                  },
+                  value: {
+                    show: true,
+                    fontFamily: "Inter, sans-serif",
+                    offsetY: -20,
+                    formatter: function (value) {
+                      return value + "k"
+                    },
+                  },
+                },
+                size: "80%",
+              },
+            },
+          },
+          grid: {
+            padding: {
+              top: -2,
+            },
+          },
+          labels: ["Direct", "Sponsor", "Affiliate", "Email marketing"],
+          dataLabels: {
+            enabled: false,
+          },
+          legend: {
+            position: "bottom",
+            fontFamily: "Inter, sans-serif",
+          },
+          yaxis: {
+            labels: {
+              formatter: function (value) {
+                return value + "k"
+              },
+            },
+          },
+          xaxis: {
+            labels: {
+              formatter: function (value) {
+                return value  + "k"
+              },
+            },
+            axisTicks: {
+              show: false,
+            },
+            axisBorder: {
+              show: false,
+            },
+          },
+        }
+      }
+
+      if (document.getElementById("donut-chart") && typeof ApexCharts !== 'undefined') {
+        const chart = new ApexCharts(document.getElementById("donut-chart"), getChartOptions());
+        chart.render();
+      }
+
+
+      const options = {
+            colors: ["#1A91FF", "#D9D9D9"],
+            series: [
+              {
+                name: "2024",
+                color: "#1A91FF",
+                data: [
+                  { x: "Jan", y: 231 },
+                  { x: "Feb", y: 122 },
+                  { x: "Mar", y: 63 },
+                  { x: "Apr", y: 421 },
+                  { x: "May", y: 122 },
+                  { x: "Jun", y: 323 },
+                  { x: "Jul", y: 111 },
+                  { x: "Aug", y: 111 },
+                  { x: "Sep", y: 111 },
+                  { x: "Oct", y: 111 },
+                  { x: "Nov", y: 111 },
+                  { x: "Dec", y: 111 },
+                ],
+              },
+              {
+                name: "2023",
+                color: "#D9D9D9",
+                data: [
+                  { x: "Jan", y: 231 },
+                  { x: "Feb", y: 122 },
+                  { x: "Mar", y: 63 },
+                  { x: "Apr", y: 421 },
+                  { x: "May", y: 122 },
+                  { x: "Jun", y: 323 },
+                  { x: "Jul", y: 111 },
+                  { x: "Aug", y: 111 },
+                  { x: "Sep", y: 111 },
+                  { x: "Oct", y: 111 },
+                  { x: "Nov", y: 111 },
+                  { x: "Dec", y: 111 },
+                ],
+              },
+            ],
+            chart: {
+              type: "bar",
+              height: "250px",
+              fontFamily: "Inter, sans-serif",
+              toolbar: {
+                show: false,
+              },
+            },
+            plotOptions: {
+              bar: {
+                horizontal: false,
+                columnWidth: "70%",
+                borderRadiusApplication: "end",
+                borderRadius: 8,
+              },
+            },
+            tooltip: {
+              shared: true,
+              intersect: false,
+              style: {
+                fontFamily: "Inter, sans-serif",
+              },
+            },
+            states: {
+              hover: {
+                filter: {
+                  type: "darken",
+                  value: 1,
+                },
+              },
+            },
+            stroke: {
+              show: true,
+              width: 0,
+              colors: ["transparent"],
+            },
+            grid: {
+              show: false,
+              strokeDashArray: 4,
+              padding: {
+                left: 2,
+                right: 2,
+                top: -14
+              },
+            },
+            dataLabels: {
+              enabled: false,
+            },
+            legend: {
+              show: false,
+            },
+            xaxis: {
+              floating: false,
+              labels: {
+                show: true,
+                style: {
+                  fontFamily: "Inter, sans-serif",
+                  cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+                }
+              },
+              axisBorder: {
+                show: false,
+              },
+              axisTicks: {
+                show: false,
+              },
+            },
+            yaxis: {
+              show: false,
+            },
+            fill: {
+              opacity: 1,
+            },
+          }
+  
+          if(document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
+            const chart = new ApexCharts(document.getElementById("column-chart"), options);
+            chart.render();
+          }
+    });
+        </script>
+  
+        
+    </div>
+    
+    
+    
+</div>
+<%- include("../admin/partials/footer.ejs"); -%>
