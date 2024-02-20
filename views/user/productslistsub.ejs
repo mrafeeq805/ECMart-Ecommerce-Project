@@ -1,0 +1,28 @@
+<div class="flex gap-3 md:gap-4">
+    <% productlist.forEach((item)=>{ %>
+        <!-- productcard -->
+        <a href="/productdetails/<%= item.product_id%>">
+            <div class=" w-28 md:w-48">
+                <div class="border-[1px] border-[#d9d9d9] rounded-lg w-max">
+                    <div class="h-32 md:h-44 md:w-40 flex justify-center md:p-8 p-5">
+                        <img class="h-full object-cover" src="<%= item.image %>" alt="thumb" height="100px">
+                    </div>
+                
+                </div>
+                <div class="px-2 p-2">
+                    <span class="block font-medium text-xs md:text-base"><%= item.title %></span>
+                    <span class="block text-[10px] text-gray-400 md:text-sm"><%= item.seller %></span>
+                    <span class="font-medium text-xs leading-3 md:text-base">₹<%= Math.round(item.sell_price - ((item.sell_price * item.discount) / 100) ) %></span>
+                    <span class="text-green-500 ml-1 text-xs md:text-base font-medium"><s>₹<%= item.sell_price %></s></span>
+                </div>
+    
+            </div>
+        </a>
+        
+    <% }) %>
+    
+    
+    
+    
+    
+</div>

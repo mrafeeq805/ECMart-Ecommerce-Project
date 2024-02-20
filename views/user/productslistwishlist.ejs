@@ -1,0 +1,54 @@
+<div class="grid grid-cols-1 gap-2 md:grid-cols-2  md:gap-6 md:mb-8">
+    <!-- product card -->
+    <script src="/javascript/user/product.js"></script>
+    <% list.forEach((item)=>{ %>
+
+    
+    <div class="border-[1px] border-[#d9d9d9] w-full rounded-lg ">
+        <div class="flex pt-2 px-2">
+            <div class="bg-[#1a91ff1f] rounded-lg ">
+                <div class="h-24 flex justify-center p-4">
+                    <img class="h-full" src="<%= item.image%>" alt="thumb">
+                </div>
+                
+            </div>
+            <div class="px-2">
+                <span class="block font-medium text"><%= item.name%></span>
+                <span class="font-bold text-">₹<%= Math.round(item.sell_price - ((item.sell_price * item.discount) / 100) )%></span><span class="text-gray-400 ml-1 text-sm font-medium"><s><%= item.sell_price%></s></span>
+                <div class="bg-green-100 px-3 py-1 mt-1 w-max rounded-sm flex justify-center">
+                    <span class="text-green-500 text-xs">You save ₹<%= Math.round((item.sell_price * item.discount) / 100)%></span>
+                     
+                </div>
+                <span class="text-xs font-medium text-gray-400 mt-1">Sold By: </span><span class="text-xs ml-2 font-medium"><%= item.seller%></span>
+            </div>
+        </div>
+        
+        <div class="w-full flex mt-2 items-center justify-between border-t-[1px]">
+            <form class="w-full" action="/home/addtocart" method="post">
+                <input name="id" value="<%= item.product_id %>" type="hidden">
+                <button class="flex justify-center items-center border-r-[1px] w-full p-1">
+                    <span class="material-symbols-outlined mr-2 text-gray-400 text-lg">
+                        add_shopping_cart
+                    </span>
+                    <span class="text-sm text-gray-400">Add to cart</span>
+                </button>
+            </form>
+            <form class="w-full" action="/home/deletewishlist" method="post">
+                <input name="id" value="<%= item.product_id %>" type="hidden">
+                <button id="" type="submit"  class="flex justify-center items-center border-r-[1px] w-full p-1">
+                    <span class="material-symbols-outlined mr-2 text-gray-400 text-lg">
+                        delete
+                    </span>
+                    <span class="text-sm text-gray-400">Delete</span>
+                </button>
+            </form>
+
+
+        </div>
+
+    </div>
+
+    <% }) %>
+    
+    
+</div>

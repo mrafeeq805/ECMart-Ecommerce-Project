@@ -1,0 +1,66 @@
+<div class="flex flex-col gap-3 w-full md:gap-4 md:w-full">
+
+
+
+    <%list.forEach((item,index)=>{%>
+    <!-- product card -->
+    <div class="border-[1px] border-[#d9d9d9] w-full rounded-lg py-2 px-2 ">
+        <div class="flex">
+            <div class="bg-[#1a91ff1f] rounded-lg h-28 md:w-42">
+                <div class="h-24 w-28 md:h-32 md:w-32 flex justify-center p-3">
+                    <img class="h-full object-cover" src="<%= item.image %>" alt="thumb">
+                </div>
+                
+            </div>
+            <div class="px-2 md:px-4">
+                <span class="block font-medium text-sm"><%= item.title %></span>
+                <span id="price-<%= item._id %>" class="font-bold text-sm">₹<%= Math.round(item.sell_price - ((item.sell_price * item.discount) / 100) ) * item.quantity %></span>
+                <span class="text-gray-400 ml-1 text-xs font-medium"><s id="discount-<%= item._id %>">₹<%= item.sell_price * item.quantity %></s></span>
+                <div  class="bg-green-100 px-3 py-1 mt-1 w-max rounded-sm flex justify-center">
+                    <span id="saving-<%= item._id %>" class="text-green-500 text-xs">You save ₹<%= Math.round((item.sell_price * item.discount) / 100) * item.quantity %></span>
+                     
+                </div>
+                <div class="md:mt-1">
+                    <span class="text-xs font-medium text-gray-400 mt-1  md:mt-2">Sold By: </span><span class="text-xs ml-2 font-medium "><%= item.seller %></span>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <span class="hidden" id="type-page"><%=type%></span>
+        <div class="flex mt-2 items-center justify-between">
+            <div class="bg-gray-200 px-3 py-1 rounded-sm md:rounded-md flex justify-center">
+                
+                <div class="flex gap-2 items-center">
+                    <span class="text-gray-400 text-sm ">Qty :</span>
+                    <button id="minus-<%= index %>-<%= item._id %>" onclick="updateQuantity(this)" class="text-lg h-[25px] w-[25px] rounded-full bg-gray-100 flex justify-center items-center">
+                        -
+                    </button>
+                    <span id="quantity-<%= index %>"><%= item.quantity%></span>
+                    <button id="plus-<%= index %>-<%= item._id %>" onclick="updateQuantity(this)" class="text-lg h-[25px] w-[25px] rounded-full bg-gray-100 flex justify-center items-center">
+                        +
+                    </button>
+                </div>
+                
+            
+            </div>
+            <% if(type == 'cart') {%>
+            <form action="/home/deletecart" method="post">
+                <input name="id" type="hidden" value="<%= item.product_id%>">
+                <button  class="material-symbols-outlined text-gray-400 text-lg md:text-2xl">
+                    delete
+                </button>
+            </form>
+            <%}%>
+            
+        </div>
+
+    </div>
+    <%})%>
+
+    <script src="/javascript/user/cart.js"></script>
+
+    
+    
+</div>
