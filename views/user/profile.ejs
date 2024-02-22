@@ -1,0 +1,206 @@
+<%- include("../user/partials/head.ejs"); -%>
+<%- include("../user/partials/logoutpopup.ejs"); -%>
+<div class="md:hidden">
+    <script src="/javascript/user/profile.js"></script>
+    <div class="flex shadow-lg shadow-gray-200 bg-white p-3 gap-5 justify-between">
+        <div class="flex gap-5">
+            <form action="/home">
+                <button class="material-symbols-outlined text-gray-500">
+                    arrow_back
+                </button>
+            </form>
+
+            <h2 class=" text-gray-500 font-medium">Profile </h2>
+        </div>
+        <div class="flex gap-3">
+            <form action="/home/cart">
+                <button class="material-symbols-outlined text-gray-500">
+                    shopping_cart
+                </button>
+            </form>
+
+        </div>
+        
+    
+    </div>
+    <div class="flex flex-col justify-center items-center mt-3">
+        <div class="h-[80px] w-[80px] rounded-full border-2 border-blue-500 p-2 mb-3">
+            <img class="h-full" src="/images/man.png" alt="">
+        </div>
+        <!-- <span class="font-medium">Muhammed Rafeeq K</span> -->
+        <span class="text-gray-400 text-sm">+91 <%= phone %></span>
+    </div>
+    <span class="text-gray-400 text-lg px-2">Shopping</span>
+    <!-- Wishlist -->
+    <a href="/home/wishlist">
+        <div class="flex items-center mt-3 px-2">
+            <div class="bg-[#d9d9d940] py-2 px-3 w-max flex justify-center items-center rounded-lg">
+                <span class="material-symbols-outlined text-[#1a91ff] text-2xl">
+                    favorite
+                </span>
+            </div>
+            <div class="flex justify-between ml-6 w-full">
+                <h3 class="font-medium text-lg">Wishlist</h3>
+                <span class="material-symbols-outlined text-gray-400 text-xl">
+                    arrow_forward_ios
+                </span>
+            </div>
+            
+    
+        </div>
+    </a>
+    
+    <!-- My orders -->
+    <a href="/home/myorders">
+        <div class="flex items-center mt-1 px-2">
+            <div class="bg-[#d9d9d940] py-2 px-3 w-max flex justify-center items-center rounded-lg">
+                <span class="material-symbols-outlined text-[#1a91ff] text-2xl">
+                    order_approve
+                </span>
+            </div>
+            <div class="flex justify-between ml-6 w-full">
+                <h3 class="font-medium text-lg">My Orders</h3>
+                <span class="material-symbols-outlined text-gray-400 text-xl">
+                    arrow_forward_ios
+                </span>
+            </div>
+            
+    
+        </div>
+    </a>
+    
+    <!-- Manage Address -->
+    <a href="/home/addressmanager">
+        <div class="flex items-center mt-1 mb-2 px-2">
+            <div class="bg-[#d9d9d940] py-2 px-3 w-max flex justify-center items-center rounded-lg">
+                <span class="material-symbols-outlined text-[#1a91ff] text-2xl">
+                    home
+                </span>
+            </div>
+            <div class="flex justify-between ml-6 w-full">
+                <h3 class="font-medium text-lg">Manage Address</h3>
+                <span class="material-symbols-outlined text-gray-400 text-xl">
+                    arrow_forward_ios
+                </span>
+            </div>
+            
+    
+        </div>
+    </a>
+    
+    <!-- general -->
+    <span class="text-gray-400 text-lg px-2">General Profile</span>
+    <!-- edit profile -->
+    <a href="/home/editprofile">
+        <div class="flex items-center mt-2 px-2">
+            <div class="bg-[#d9d9d940] py-2 px-3 w-max flex justify-center items-center rounded-lg">
+                <span class="material-symbols-outlined text-[#1a91ff] text-2xl">
+                    account_circle
+                </span>
+            </div>
+            <div class="flex justify-between ml-6 w-full">
+                <h3 class="font-medium text-lg">Edit Profile</h3>
+                <span class="material-symbols-outlined text-gray-400 text-xl">
+                    arrow_forward_ios
+                </span>
+            </div>
+            
+    
+        </div>
+    </a>
+    
+    <!-- settings -->
+    <!-- <div class="flex items-center mt-1 px-2">
+        <div class="bg-[#d9d9d940] py-2 px-3 w-max flex justify-center items-center rounded-lg">
+            <span class="material-symbols-outlined text-[#1a91ff] text-2xl">
+                settings
+            </span>
+        </div>
+        <div class="flex justify-between ml-6 w-full">
+            <h3 class="font-medium text-lg">Settings</h3>
+            <span class="material-symbols-outlined text-gray-400 text-xl">
+                arrow_forward_ios
+            </span>
+        </div>
+        
+
+    </div> -->
+    <!-- refund -->
+    <!-- <div class="flex items-center mt-1 px-2">
+        <div class="bg-[#d9d9d940] py-2 px-3 w-max flex justify-center items-center rounded-lg">
+            <span class="material-symbols-outlined text-[#1a91ff] text-2xl">
+                account_balance_wallet
+            </span>
+        </div>
+        <div class="flex justify-between ml-6 w-full">
+            <h3 class="font-medium text-lg">Refunds & Returns</h3>
+            <span class="material-symbols-outlined text-gray-400 text-xl">
+                arrow_forward_ios
+            </span>
+        </div>
+        
+
+    </div> -->
+    <!-- logout -->
+    <div onclick="showLogout()" class="flex items-center mt-1 px-2">
+        <div class="bg-[#d9d9d940] py-2 px-3 w-max flex justify-center items-center rounded-lg">
+            <span class="material-symbols-outlined text-[#1a91ff] text-2xl">
+                logout
+            </span>
+        </div>
+        <div class="flex justify-between ml-6 w-full">
+            <h3 class="font-medium text-lg">Logout</h3>
+            <span class="material-symbols-outlined text-gray-400 text-xl">
+                arrow_forward_ios
+            </span>
+        </div>
+        
+
+    </div>
+</div>
+<!-- Desktop view -->
+<div class="hidden md:flex md:flex-col">
+    <!-- search -->
+    <div class="hidden md:flex w-full">
+        <%- include("../user/partials/desktoptitlebar.ejs"); -%>
+    
+    </div>
+    <div class="my-6 px-32">
+        <a href="/home" class="text-gray-500">Home </a>
+        <a href="/home/editprofile" class="text-gray-500">/ Account </a>
+        <span class="text-lg font-medium">/ My Orders</span>
+    </div>
+    <!-- account section -->
+    <div class="px-32 mt-10">
+        <div class="border-b-[1px] pb-3">
+            <span class="text-lg font-medium block">Account</span>
+            <span class="text-sm text-gray-500">App User </span>
+        </div>
+        <div class="w-full flex ">
+            <div class="border-r-[1px] w-52 h-[550px]">
+                <div class="">
+                    <div class="border-b-[1px] py-5 flex flex-col gap-3">
+                        <span class="block text-gray-500 text-sm">ORDERS</span>
+                        <a href="/home/myorders" class="">Orders</a>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="border-b-[1px] py-5 flex flex-col gap-3">
+                        <span class="block text-gray-500 text-sm">PROFILE</span>
+                        <a href="/home/addressmanager" >Manage Address</a>
+                        <a href="/home/wishlist">Wishlist</a>
+                        <a href="/home/editprofile">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6 w-6/12">
+                
+            </div>    
+        </div>
+
+
+
+    </div>
+    
+</div>
+<%- include("../user/partials/close.ejs"); -%>

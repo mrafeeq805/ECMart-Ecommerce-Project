@@ -1,0 +1,93 @@
+<%- include("../user/partials/head.ejs"); -%>
+<!-- search -->
+<div class="hidden md:flex w-full">
+    <%- include("../user/partials/desktoptitlebar.ejs"); -%>
+
+</div>
+<div class="my-6 px-16 hidden md:block">
+    <a href="/home" class="text-gray-500">Home </a>
+    <span class="text-lg font-medium">/ Cart</span>
+</div>
+<div class="h-full md:px-32 w-full">
+    <div class="flex shadow-lg shadow-gray-200 bg-white p-3 gap-5 justify-between md:hidden">
+        <div class="flex gap-5">
+            <form action="/home">
+                <button class="material-symbols-outlined text-gray-500">
+                    arrow_back
+                </button>
+            </form>
+
+            <h2 class=" text-gray-500 font-medium">Shopping Cart</h2>
+        </div>
+        
+        
+    
+    </div>
+    <%if(list.length > 0){%>
+    <div class="px-2 w-full pt-4 pb-2 bg-white flex flex-col justify-between mt-3 md:flex md:flex-row ">
+        <div class="md:w-5/12 w-full">
+            
+            <div class="flex justify-between my-3 md:w-full">
+                <span class="font-bold md:text-lg">My Basket (<%= list.length%>)</span>
+                <span id="basket-total" class="font-bold md:text-lg">₹<%= payment.total%>.00</span>
+            </div>
+            <div class="md:w-full w-full">
+                <%- include("../user/productslistcart.ejs",{list:list,type:'cart'}); -%>
+            </div>
+            
+        </div>
+
+        <div class=" md:w-5/12 w-full ">
+            <div class="mb-24">
+                <%- include("../user/partials/paymentdetails.ejs",{payment:payment}); -%>
+            </div>
+            <div class="bg-slate-100 flex justify-between md:mt-8 md:px-0 fixed bottom-0 left-0 right-0 p-3 md:static w-full">
+                <div>
+                    <span id="cart-total" class="text-2xl font-bold block leading-6">₹<%= payment.total%>.00</span>
+                    <span id="cart-saving" class="text-green-500 text-sm mt-[10px] ml-1">You save ₹<%= payment.total_discount%>.00</span>
+                </div>
+                <form action="/home/cartcheckout" method="get">
+                    <button class="h-max py-2.5 px-10 bg-[#1a91ff] rounded-full md:rounded text-white">
+                        Place Order
+                    </button>
+                </form>
+                
+        
+            </div>
+        </div>
+        
+        
+    
+        
+    
+    </div>
+    <%}else{%>
+        <div class=" flex justify-center flex-col items-center h-[600px]">
+            <div class="">
+                <img class="h-40 w-40" src="/images/empty-cart.png" alt="dno">
+            </div>
+            <h1 class="text-2xl"><strong>Your Cart is Empty</strong></h1>
+            <p class="text-gray-500 text-sm w-52 text-center">Looks you didnt have added any items to cart</p>
+            
+        </div>
+    <%}%>
+        
+    <!-- related products -->
+    <!-- <div class="hidden md:flex md:flex-col">
+        <h1 class="text-lg font-medium my-4">Related Products</h1>
+        <div>
+            
+        </div>
+        
+    </div> -->
+    <!-- footer -->
+<div class="hidden md:flex md:flex-col ">
+    
+    <div>
+        <%- include("../user/partials/footer.ejs"); -%>
+    </div>
+    
+</div>
+</div>
+<%- include("../user/partials/close.ejs"); -%>
+
