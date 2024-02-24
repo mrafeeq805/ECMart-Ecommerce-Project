@@ -1,0 +1,97 @@
+
+<%- include("../user/partials/head.ejs"); -%>
+<!-- mobile view -->
+<div class="h-full md:hidden">
+    <div class="flex shadow-lg shadow-gray-200 bg-white p-3 gap-5 justify-between">
+        <div class="flex gap-5">
+            <form action="/home/addressmanager">
+                <button class="material-symbols-outlined text-gray-500">
+                    arrow_back
+                </button>
+            </form>
+
+            <h2 class=" text-gray-500 font-medium">Edit Address </h2>
+        </div>
+        <div class="flex gap-3">
+            <form action="/home/cart">
+                <button class="material-symbols-outlined text-gray-500">
+                    shopping_cart
+                </button>
+            </form>
+
+        </div>
+        
+    
+    </div>
+    <form class="" action="/home/editaddress" method="post">
+        <div class="flex flex-col h-full justify-between pt-5 px-2">
+            <input type="hidden" name="meth" value="<%= meth%>">
+        
+            <%- include("../user/partials/editaddressdiv.ejs",{list:list}); -%>
+            <button type="submit" value="submit" onclick="return editAddressValidate('mob')" class="fixed bottom-0 left-0 right-0 p-2 bg-[#1a91ff] rounded-full font-medium text-white ">
+                Save Address
+            </button>
+    
+        </div>
+    </form>
+</div>
+<!-- Desktop view -->
+<div class="hidden md:flex md:flex-col">
+    <!-- search -->
+    <div class="hidden md:flex w-full">
+        <%- include("../user/partials/desktoptitlebar.ejs"); -%>
+    
+    </div>
+    <div class="my-6 px-16 hidden md:block">
+        <a href="/home" class="text-gray-500">Home </a>
+        <a href="/home/editprofile" class="text-gray-500">/ Account </a>
+        <a href="/home/addressmanager" class="text-gray-500">/ Address Manger</a>
+        <span class="text-lg font-medium">/ Edit Address %></span>
+    </div>
+    <!-- account section -->
+    <div class="px-32 mt-10">
+        <div class="border-b-[1px] pb-3">
+            <span class="text-lg font-medium block">Account</span>
+            <span class="text-sm text-gray-500">App User </span>
+        </div>
+        <div class="w-full flex ">
+            <div class="border-r-[1px] w-52 h-[550px]">
+                <div class="">
+                    <div class="border-b-[1px] py-5 flex flex-col gap-3">
+                        <span class="block text-gray-500 text-sm">ORDERS</span>
+                        <a href="/home/myorders">Orders</a>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="border-b-[1px] py-5 flex flex-col gap-3">
+                        <span class="block text-gray-500 text-sm">PROFILE</span>
+                        <a href="/home/addressmanager" class="text-blue-500" >Manage Address</a>
+                        <a href="/home/wishlist">Wishlist</a>
+                        <a href="/home/editprofile">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+            <form class="p-6 w-6/12" action="/home/editaddress" method="post">
+                <div >
+                    <div class="border-b-[1px] w-max pb-1 mb-4 px-3">
+                        <span class="font-medium">Edit Address</span>
+                    </div>
+                    <div>
+                        <%- include("../user/partials/editaddressdiv2.ejs"); -%>
+                    </div>
+
+                    <button type="submit" value="submit" onclick="return editAddressValidate('des')" class="p-2 px-8 bg-[#1a91ff] rounded-md font-medium text-white mt-10">
+                        Update Details
+                    </button>
+                
+
+                </div>
+            </form>
+            
+        </div>
+
+
+
+    </div>
+</div>
+<%- include("../user/partials/close.ejs"); -%>

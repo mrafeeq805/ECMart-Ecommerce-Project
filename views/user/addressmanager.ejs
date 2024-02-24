@@ -1,0 +1,99 @@
+<%- include("../user/partials/head.ejs"); -%>
+<!-- mobile view -->
+<div class="h-[100vh] md:hidden">
+    <div class="md:hidden flex shadow-lg shadow-gray-200 bg-white p-3 gap-5 justify-between">
+        <div class="flex gap-5">
+            <form action="/home/profile">
+                <button class="material-symbols-outlined text-gray-500">
+                    arrow_back
+                </button>
+            </form>
+
+            <h2 class=" text-gray-500 font-medium">Address Manager </h2>
+        </div>
+        <div class="flex gap-3">
+            <form action="/home/cart">
+                <button class="material-symbols-outlined text-gray-500">
+                    shopping_cart
+                </button>
+            </form>
+            
+        </div>
+        
+    
+    </div>
+    <div class="px-2 pt-4 pb-2 bg-gray-50 flex flex-col justify-between mt-4">
+        <div>
+            <%- include("../user/partials/addressmanagerdiv.ejs"); -%>
+        </div>
+        <form action="/home/addaddress/new_add" method="get">
+            <button class="p-2 fixed bottom-2 right-0 left-0 bg-[#1a91ff] rounded-full font-medium text-white">
+                Add New Address
+            </button>
+        </form>
+        
+    
+        
+    
+    </div>
+</div>
+<!-- Desktop view -->
+<div class="hidden md:flex md:flex-col">
+    <!-- search -->
+    <div class="hidden md:flex w-full">
+        <%- include("../user/partials/desktoptitlebar.ejs"); -%>
+    
+    </div>
+    <div class="my-6 px-16 hidden md:block">
+        <a href="/home" class="text-gray-500">Home </a>
+        <a href="/home/editprofile" class="text-gray-500">/ Account </a>
+        <span class="text-lg font-medium">/ Address Manager</span>
+    </div>
+    <!-- account section -->
+    <div class="px-32 mt-10">
+        <div class="border-b-[1px] pb-3">
+            <span class="text-lg font-medium block">Account</span>
+            <span class="text-sm text-gray-500">App User </span>
+        </div>
+        <div class="w-full flex ">
+            <div class="border-r-[1px] w-52 h-[550px]">
+                <div class="">
+                    <div class="border-b-[1px] py-5 flex flex-col gap-3">
+                        <span class="block text-gray-500 text-sm">ORDERS</span>
+                        <a href="/home/myorders">Orders</a>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="border-b-[1px] py-5 flex flex-col gap-3">
+                        <span class="block text-gray-500 text-sm">PROFILE</span>
+                        <a href="/home/addressmanager" class="text-blue-500" >Manage Address</a>
+                        <a href="/home/wishlist">Wishlist</a>
+                        <a href="/home/editprofile">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6 w-6/12">
+                <div class="border-b-[1px] w-max pb-1 mb-4 px-3">
+                    <span class="font-medium">Address List</span>
+                </div>
+                <div>
+                    <%- include("../user/partials/addressmanagerdiv.ejs"); -%>
+                </div>
+                <form action="/home/addaddress/new_add" method="get">
+                    <button class="p-2 px-8 border-2 rounded-md font-medium text-gray-500 mt-10">
+                        Add New Address
+                    </button>
+                </form>
+
+            </div>
+            
+        </div>
+
+
+
+    </div>
+    <!-- footer -->
+    <%- include("../admin/partials/footer.ejs"); -%>
+</div>
+
+<%- include("../user/partials/close.ejs"); -%>

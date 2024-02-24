@@ -1,0 +1,135 @@
+<div class="">
+
+    <div class="flex gap-4 items-center">
+        <span class="material-symbols-outlined text-[#1a91ff] text-3xl">
+            perm_contact_calendar
+        </span>
+        <h2 class="text-lg font-semibold ">Contact Details</h2>
+    </div>
+    <!-- name & phone -->
+    <div class="mt-4 flex gap-4">
+        <!-- name --> 
+        <div class="w-full ">
+            
+            <label for="name" class="text-gray-400 flex items-center text-sm ">
+                Name
+            </label>
+            <div class="border-b-2">
+                <input type="text" id="name-edit-des" name="name" value="<%= list.name %>" class="w-full h-8 px-1 text-sm  outline-none border-none">
+            </div>
+            
+        </div>
+        <!-- phone --> 
+        <div class="w-full ">
+            <label for="phone" class="text-gray-400 flex items-center text-sm ">
+                Phone Number
+            </label>
+            <div class="border-b-2">
+                <input type="number" id="phone-edit-des" name="phone" value="<%= list.phone %>" class="w-full h-8 px-1 text-sm peer outline-none border-none">
+            </div>
+           
+            
+        </div>
+    </div> 
+    <!-- address -->
+    <div class="flex gap-4 items-center my-3">
+        <span class="material-symbols-outlined text-[#1a91ff] text-3xl">
+            distance
+        </span>
+        <h2 class="text-lg font-semibold ">Address</h2>
+    </div>
+    <!-- house --> 
+    <div class="w-full">
+        <label for="house" class=" text-gray-400 text-sm">
+            House No / Building Name
+        </label>
+        <div class="border-b-2">
+            <input type="text" id="building-edit-des" name="building" value="<%= list.building %>" class="w-full h-8 px-1 text-sm peer outline-none border-none">
+        </div>
+        
+
+    </div>
+    <!-- area --> 
+    <div class="w-full mt-5">
+        <label for="area" class="text-gray-400 text-sm">
+            Road Name / Area / Colony
+        </label>
+        <div class="border-b-2">
+            <input type="text" id="area-edit-des" name="area" value="<%= list.area %>" class="w-full h-8 px-1 text-sm peer outline-none border-none">
+        </div>
+        
+
+    </div>
+    <!-- pincode --> 
+    <div class="w-full mt-5">
+        <label for="pin" class="text-gray-400 text-sm">
+            Pincode
+        </label>
+        <div class="border-b-2">
+            <input type="number" id="pin-edit-des" name="pin" value="<%= list.pin %>" class="w-full h-8 px-1 text-sm peer outline-none border-none">
+        </div>
+        
+
+    </div>
+    <!-- city & state -->
+    <div class="mt-5 flex gap-4">
+        <!-- city --> 
+        <div class="w-full ">
+            <label for="city" class="text-gray-400 text-sm">
+                City
+            </label>
+            <div class="border-b-2">
+                <input type="text" id="city-edit-des" name="city" value="<%= list.city %>" class="w-full h-8 px-1 text-sm peer outline-none border-none">
+            </div>
+            
+
+        </div>
+        <!-- state --> 
+        <div class="w-full">
+            <label for="state" class="text-gray-400 text-sm">
+                State
+            </label>
+            <div class="border-b-2">
+                <input type="text" id="state-edit-des" name="state" value="<%= list.state %>" class="w-full h-8 px-1 text-sm peer outline-none border-none">
+            </div>
+            
+
+        </div>
+    </div> 
+    <!-- landmark --> 
+    <div class="w-full mt-5">
+        <label for="land" class="text-gray-400 text-sm">
+            Nearby Famous Place / Shop
+        </label>
+        <div class="border-b-2">
+            <input type="text" id="landmark-edit-des" name="landmark" value="<%= list.landmark %>" class="w-full h-8 px-1 text-sm peer outline-none border-none">
+        </div>
+        
+
+    </div>
+    <input name="id" value="<%= list._id %>" type="hidden">
+    <!-- category -->
+    <script src="/javascript/user/address.js"></script>
+    <div class="flex gap-6 mt-8">
+        <input name="category" id="category-edit-des" type="hidden" value="<%= list.category %>">
+        <% if(list.category == 'home') {%>
+        <!-- home -->
+        <button type="button" onclick="categorySelectEdit(this)" id="home-edit-des" class="py-[1px] bg-[#1a91ff] w-max rounded-2xl px-6">
+            <span id="home-span-edit-des" class="text-white">Home</span>
+        </button>
+        <!-- office -->
+        <button type="button" onclick="categorySelectEdit(this)" id="office-edit-des" class="py-[1px] border-2 border-[#1a91ff] w-max rounded-2xl px-6">
+            <span id="office-span-edit-des" class="text-[#1a91ff]">Office</span>
+        </button>
+        <%}else{%>
+            <!-- home -->
+        <button type="button" onclick="categorySelectEdit(this)" id="home-edit-des" class="py-[1px] border-2 border-[#1a91ff] w-max rounded-2xl px-6">
+            <span id="home-span-edit-des" class="text-[#1a91ff]">Home</span>
+        </button>
+        <!-- office -->
+        <button type="button" onclick="categorySelectEdit(this)" id="office-edit-des" class="py-[1px] bg-[#1a91ff] w-max rounded-2xl px-6">
+            <span id="office-span-edit-des" class="text-white ">Office</span>
+        </button>
+        <%}%>
+    </div>
+</div>
