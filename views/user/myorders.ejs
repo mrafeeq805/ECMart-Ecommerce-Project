@@ -1,0 +1,129 @@
+<%- include("../user/partials/head.ejs"); -%>
+<div>
+<!-- mobile view -->
+<script src="/javascript/user/orders.js"></script>
+<div class="md:hidden">
+    <div class="flex shadow-lg shadow-gray-200 bg-white p-3 gap-5 justify-between ">
+        <div class="flex gap-5">
+            <form action="/home/profile">
+                <button class="material-symbols-outlined text-gray-500">
+                    arrow_back
+                </button>
+            </form>
+
+            <h2 class=" text-gray-500 font-medium">My Orders</h2>
+        </div>
+    
+    </div>
+
+    <div class="px-2 pt-4 pb-2 flex flex-col justify-between h-full ">
+        
+        <div>
+        <!-- search -->
+
+        <!-- <div class="px-3 bg-gray-50">
+            <div class=" flex pl-3 items-center mt-3 md:bg-gray-50">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="gray" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+                <input class="border-none h-10 w-full bg-inherit px-3" type="text" placeholder="Search Orders...">
+            </div>
+        </div> -->
+
+        <!-- fitlers -->
+        <div class="w-full flex border-2 p-2 mt-3">
+            <div class="w-full">
+                <span>Filter By</span>
+            </div>
+            <select onchange="filterMyOrders('mob')"  class=" border-none text-sm" name="filter-myorder" id="filter-myorder">
+                <option class="text-xs" value="All">All</option>
+                <option class="text-xs" value="Processing">Processing</option>
+                <option class="text-xs" value="Delivered">Delivered</option>
+                <option class="text-xs" value="Out Of Delivery">Out Of Delivery</option>
+                <option class="text-xs" value="Shipped">Shipped</option>
+                <option class="text-xs" value="Cancelled">Cancelled</option>
+            </select>
+
+
+        </div>            
+            <div id="table-container">
+                <%- include("../user/partials/myordersdiv.ejs",{list:list});%>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+<!-- Desktop view -->
+<div class="hidden md:flex md:flex-col">
+    <!-- search -->
+    <div class="hidden md:flex w-full">
+        <%- include("../user/partials/desktoptitlebar.ejs"); -%>
+    
+    </div>
+    <div class="my-6 px-32">
+        <a href="/home" class="text-gray-500">Home </a>
+        <a href="/home/editprofile" class="text-gray-500">/ Account </a>
+        <span class="text-lg font-medium">/ My Orders</span>
+    </div>
+    <!-- account section -->
+    <div class="px-32 mt-10">
+        <div class="border-b-[1px] pb-3">
+            <span class="text-lg font-medium block">Account</span>
+            <span class="text-sm text-gray-500">App User </span>
+        </div>
+        <div class="w-full flex ">
+            <div class="border-r-[1px] w-52 h-[550px]">
+                <div class="">
+                    <div class="border-b-[1px] py-5 flex flex-col gap-3">
+                        <span class="block text-gray-500 text-sm">ORDERS</span>
+                        <a href="/home/myorders" class="text-blue-500">Orders</a>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="border-b-[1px] py-5 flex flex-col gap-3">
+                        <span class="block text-gray-500 text-sm">PROFILE</span>
+                        <a href="/home/addressmanager" >Manage Address</a>
+                        <a href="/home/wishlist">Wishlist</a>
+                        <a href="/home/editprofile">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6 w-6/12">
+                <div class="border-b-[1px] w-max pb-1 mb-4 px-3">
+                    <span class="font-medium">My Orders</span>
+                </div>
+                <!-- fitlers -->
+        <div class="w-full flex border-2 p-2 mt-3">
+            <div class="w-full">
+                <span>Filter By</span>
+            </div>
+            <select onchange="filterMyOrders('des')"  class=" border-none text-sm" name="filter-myorder" id="filter-myorder-des">
+                <option class="text-xs" value="All">All</option>
+                <option class="text-xs" value="Processing">Processing</option>
+                <option class="text-xs" value="Delivered">Delivered</option>
+                <option class="text-xs" value="Out Of Delivery">Out Of Delivery</option>
+                <option class="text-xs" value="Shipped">Shipped</option>
+                <option class="text-xs" value="Cancelled">Cancelled</option>
+            </select>
+
+
+        </div>
+                <div id="table-container-des">
+                    <%- include("../user/partials/myordersdiv.ejs"); -%>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+
+
+
+    </div>
+    
+</div>
+</div>
+
+<%- include("../user/partials/close.ejs"); -%>

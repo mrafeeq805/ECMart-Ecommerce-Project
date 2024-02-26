@@ -1,0 +1,91 @@
+<%- include("../user/partials/head.ejs"); -%>
+<!-- search -->
+<div class="hidden md:flex fixed top-0 shadow-lg shadow-gray-200 bg-white p-3 gap-5 justify-between items-center w-full ">
+    <div class="flex gap-5 md:gap-8 items-center w-full">
+        
+        <div class="h-12 ">
+            <img class="h-full object-cover" src="/images/ecmart.png" alt="logo">
+        </div>
+        <!-- search -->
+        <div class="px-3 hidden md:flex md:w-6/12">
+            <div class="bg-white flex pl-3 items-center mt-3 border-2 rounded-md md:w-full">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="gray" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+                <input class="h-10 w-full bg-inherit px-3 " type="text" placeholder="Search Compents and Projects...">
+            </div>
+        </div>
+    </div>
+    <div class="flex gap-3">
+        
+        <button class="material-symbols-outlined text-gray-500 md:5xl">
+            search
+        </button>
+        
+        <button class="material-symbols-outlined text-gray-500">
+            shopping_cart
+        </button>
+    </div>
+    
+
+</div>
+
+<div class="md:mt-28">
+    <div class="flex shadow-lg shadow-gray-200 bg-white p-3 gap-5 w-full md:hidden">
+        <div class="flex gap-5 w-full justify-between">
+            <button class="material-symbols-outlined text-gray-500">
+                Logo
+            </button>
+            <form action="/home">
+                <button class="material-symbols-outlined text-gray-500">
+                    close
+                </button>
+            </form>
+
+        </div>
+        
+    </div>
+    <div class="flex flex-col justify-center items-center gap-3 mt-5">
+        <div class="flex items-center gap-2">
+            <div>
+                <img class="h-12" src="/images/verify.png" alt="n">
+             </div>
+            <span class="font-medium text-lg">Order Placed !</span>
+            <form class="hidden md:block ml-10" action="/home">
+                <button class="material-symbols-outlined text-gray-500 h-[40px] w-[40px] rounded-full bg-slate-100">
+                    close
+                </button>
+            </form>
+        </div>
+        <div class="border-[1px] rounded-md p-2 w-max">
+            <img class="h-28 " src="<%= details.image%>" alt="lo">
+        </div>
+        <p class="text-lg w-2/3 text-center text-gray-600 "><%= details.title%></p>
+        <div class="bg-blue-50 p-2 px-12 rounded-md">
+            <span class=" text-gray-600">Delivery By : </span><span class="text-gray-600 font-bold ">06 Dec</span>
+        </div>
+        <div class="bg-gray-50 p-2 w-full flex justify-center items-center gap-2 rounded-md">
+            <span class=" text-gray-600 uppercase"><%= details.method%> : </span><span class="font-bold text-green-500">₹<%= details.amount%>.00</span>
+        </div>
+        <div class="flex justify-end items-center flex-col">
+            <div>
+                <span class="text-gray-400 font-medium text-sm">Delivering to : </span>
+                <span class="text-gray-400 font-medium text-sm"><%= details.address.name%>   &nbsp;|&nbsp;   <%= details.address.phone%></span>
+            </div>
+            <div class="px-5 flex justify-center items-center">
+                <span class="text-gray-400 text-center text-sm w-"><%= details.address.building%> , <%= details.address.area%> , <%= details.address.state%> - <%= details.address.pin%></span>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+<!-- footer -->
+<div class="hidden md:flex md:flex-col ">
+    
+    <div>
+        <%- include("../user/partials/footer.ejs"); -%>
+    </div>
+    
+</div>
+<%- include("../user/partials/close.ejs"); -%>

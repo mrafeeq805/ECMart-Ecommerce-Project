@@ -1,0 +1,140 @@
+<%- include("../user/partials/head.ejs"); -%>
+<!-- search -->
+    <div class="hidden md:flex w-full">
+        <%- include("../user/partials/desktoptitlebar.ejs"); -%>
+    
+    </div>
+    <div class="my-6 px-16 hidden md:block">
+        <a href="/home" class="text-gray-500">Home </a>
+        <a href="/home/editprofile" class="text-gray-500">/ Account </a>
+        <a href="/home/myorders" class="text-gray-500">/ My Orders</a>
+        <span class="text-lg font-medium">/ <%= details.order_id %></span>
+    </div>
+<div class="relative bg-gray-50 h-full md:w-full md:flex md:justify-center md:items-center md:flex-col">
+    <div class="flex shadow-lg md:hidden shadow-gray-200 bg-white p-3 gap-5 justify-between">
+        <div class="flex gap-5">
+            <button class="material-symbols-outlined text-gray-500">
+                arrow_back
+            </button>
+            <h2 class=" text-gray-500 font-medium">Order Details </h2>
+        </div>
+        <div class="flex gap-3">
+            
+            <button class="material-symbols-outlined text-gray-500">
+                shopping_cart
+            </button>
+        </div>
+        
+    
+    </div>
+    <div class="flex  flex-col justify-between mt-5 md:w-5/12 md:mt-28 md:justify-center">
+        <div class="px-3 md:bg-white md:py-4 w-full">
+            <!-- card -->
+            <div class="flex w-full justify-between p-2 rounded-md bg-white md:border-r-[1px]">
+                <div class="flex w-max">
+                    <div class="bg-gray-100 rounded-md w-4/12 px-4 py-2 flex justify-center items-center md:h-28">
+                        <img class=" object-cover" src="<%= details.products[0].image %>" alt="h">
+                    </div>
+                    <div class="ml-2 w-full">
+                        <span class="block md:text-lg"><%= details.products[0].title %></span>
+                        <div class="md:mt-1">
+                            <span class="text-sm text-gray-500 md:mt-3 md:text-base"><%= details.date %></span>
+                        </div>
+                        
+                        <div class="flex gap-3 mt-2 items-center justify-between md:mt-4">
+                            <div class="flex gap-3">
+                                <div class="bg-green-100 px-3 w-max flex justify-center items-center pb-0.5">
+                                    <span class="text-xs md:text-sm text-green-500"><%= details.status %></span>
+                                </div>
+                                <a class="text-[#1a91ff] text-xs md:text-sm" href="">Tracking Link</a>
+                            </div>
+                            <div class="">
+                                <span class="text-xs block text-gray-400 leading-6 md:text-sm">#<%= details.order_id %></span>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+                
+               
+            </div>
+            <!-- address -->
+            <div class="bg-white rounded-md px-3 py-2 my-4">
+                <div> 
+                    <span class="font-medium block text-gray-600">Shipping Address</span>
+                    <span class="block text-sm text-gray-600"><%= details.address.building %>, <%= details.address.area %> , <%= details.address.landmark %></span>
+                    <span class="block text-sm text-gray-600"><%= details.address.city %> (dis), <%= details.address.state %></span>
+                    <span class="block text-sm text-gray-600"><%= details.address.pin %>, India</span>
+                    <span class="font-medium block text-sm mt-1 text-gray-600">+91 <%= details.address.phone %></span>
+                    <div class="px-4 flex justify-center items-center bg-gray-100 w-max rounded-md pb-1 my-2">
+                        <span class="text-gray-400 text-sm"><%= details.address.category %></span>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- payment details -->
+            <div class="bg-white rounded-md px-3 py-2 my-4 md:border-r-[1px]">
+                <div class="flex flex-col gap-1"> 
+                    <span class="font-medium block text-gray-600">Payment Info</span>
+                    <span class="block text-sm text-gray-600">Payment Method</span>
+                    <span class="block text-sm text-gray-600"><%= details.method %></span>
+                    
+                </div>
+                
+            </div>
+            <!-- order summary -->
+            <div class="bg-white rounded-md px-3 py-2 my-4">
+                <div class="flex flex-col gap-1"> 
+                    <span class="font-medium block text-gray-600">Order Summary</span>
+                    <div class="flex justify-between">
+                        <span class="block text-xs text-gray-600">Sub Total</span>
+                        <span class="block text-xs text-gray-600">₹<%= details.total + details.discount %>.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="block text-xs text-gray-600">Delivery Charge</span>
+                        <span class="block text-xs text-gray-600">₹<%= details.shipping_charge %>.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="block text-xs text-gray-600">Discount</span>
+                        <span class="block text-xs text-gray-600">₹<%= details.discount %>.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="block text-xs text-gray-600">Total</span>
+                        <span class="block text-xs text-gray-600">₹<%= details.total %>.00</span>
+                    </div>
+                    
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="w-full md:static absolute bottom-0 flex gap-5 p-3 md:bg-white md:w-full">
+            <button class="border-2 rounded-full py-1 text-gray-500 w-full md:w-full md:py-2">
+                Cancel Order
+            </button>
+            <button class=" rounded-full py-1 bg-[#1a91ff] w-full flex items-center gap-3 px-3 md:py-2 justify-center">
+                <span class="material-symbols-outlined text-white">
+                    receipt_long
+                </span>
+                <span class="text-white w-max">Download Invoice</span>
+            </button>
+        </div>
+    </div>
+    
+
+    
+</div>
+<!-- footer -->
+<div class="hidden md:flex md:flex-col ">
+    
+    <div>
+        <%- include("../user/partials/footer.ejs"); -%>
+    </div>
+    
+</div>
+<%- include("../user/partials/close.ejs"); -%>

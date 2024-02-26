@@ -1,0 +1,162 @@
+<%- include("../user/partials/head.ejs"); -%>
+<!-- search -->
+<script src="/javascript/user/cart.js"></script>
+<div class="hidden md:flex w-full">
+    <%- include("../user/partials/desktoptitlebar.ejs"); -%>
+
+</div>
+<div class="my-6 px-16 hidden md:block">
+    <a href="/home" class="text-gray-500">Home </a>
+    <a href="/home/cart" class="text-gray-500">/ Cart </a>
+    <a href="/home/cartcheckout" class="text-gray-500">/ Select Address </a>
+    <span class="text-lg font-medium">/ Order Summary</span>
+</div>
+<div class="">
+    <div class="flex shadow-lg shadow-gray-200 bg-white p-3 gap-5 justify-between md:hidden">
+        <div class="flex gap-5">
+            <form action="/home/cartcheckout">
+                <button class="material-symbols-outlined text-gray-500">
+                    arrow_back
+                </button>
+            </form>
+
+            <h2 class=" text-gray-500 font-medium">Order Summary </h2>
+        </div>
+        <div class="flex gap-3">
+            <form action="/home/cart">
+                <button class="material-symbols-outlined text-gray-500">
+                    shopping_cart
+                </button>
+            </form>
+
+        </div>
+        
+    
+    </div>
+    <div class="px-2 w-full pt-4 md:pt-2 pb-2 bg-white h-full flex flex-col justify-between mt-4">
+        <div class="w-full">
+            <!-- status bar -->
+            <div class="w-full ">
+                <div class="flex items-center justify-center gap-2 px-2 pt-2">
+                    <div class="h-[25px] w-[25px] md:h-[30px] md:w-[30px] rounded-full border-blue-400 border-[1px] flex justify-center items-center">
+                        <span class="material-symbols-outlined text-lg text-blue-400">
+                            done
+                        </span>
+                    </div>
+                    <div class="h-[0.05em] bg-gray-300 w-24 md:w-44"></div>
+                    <div class="h-[25px] w-[25px] md:h-[30px] md:w-[30px] rounded-full bg-blue-400 flex justify-center items-center">
+                        <label class="text-xs text-white">2</label>
+                    </div>
+                    <div class="h-[0.05em] bg-gray-300 w-24 md:w-44"></div>
+                    <div class="h-[25px] w-[25px] md:h-[30px] md:w-[30px] rounded-full bg-blue-400 border-[1px] flex justify-center items-center">
+                        <label class="text-xs text-white">3</label>
+                    </div>
+                    
+                    
+                </div>
+                <div class="flex items-center gap-[72px] justify-center w-full  mb-2 pb-2 md:gap-[158px]">
+                    <span class="text-xs">Address</span>
+                    
+                    <span class="text-xs ">Order Summary</span>
+                    
+                    <span class="text-xs ">Payment</span>
+        
+                </div>
+                
+            </div>
+            
+            
+            <div class="md:grid md:grid-cols-2 md:px-32 md:gap-x-16 md:gap-y-4 md:w-full">
+                <div class="w-full">
+                    <div class="bg-gray-50 rounded-lg px-3 pt-3 pb-4 relative md:static h-max flex items-start">
+                    
+                        <div class="flex flex-col items-start w-full">
+                            <div class="flex gap-2">
+                                <span class="font-medium "><%= address.name %></span>
+                                <div class="px-3 flex justify-center items-center bg-gray-100 w-max rounded-sm ">
+                                    <span class="text-gray-400 text-sm mt-[-3px] capitalize"><%= address.category %></span>
+                                </div>
+                            </div>
+                            
+                            <span class="block text-sm"><%= address.building %>, <%= address.area %> ,  <%= address.city %> (dis), <%= address.state %>,<%= address.pin %></span>
+                            <span class="font-medium block text-sm mt-1">+91 <%= address.phone %></span>
+                            
+                        </div>
+                        <form action="/home/cartcheckout" method="get">
+                            <button class="px-3 flex justify-center items-center  w-max rounded-sm pb-1 border-2 bg-white">
+                                <span class="text-gray-400 text-sm">Change</span>
+                            </button>
+                        </form>
+    
+                        
+                    </div>
+                    <!-- coupons -->
+                    <div class="hidden border-2 p-3 mt-4">
+                        <div class="flex justify-between items-center mb-1">
+                            <div class="flex gap-6 items-center">
+                                <span class="material-symbols-outlined text-gray-400 text-2xl">
+                                    sell
+                                 </span>
+                                 <span class=" font-medium">Coupons</span>
+                            </div>
+                            
+                             <button class="bg-[#1a91ff] p-1 px-4 text-white">Apply</button>
+    
+    
+                        </div>
+                        <span class="text-sm text-gray-500">Upto ₹300 off on first order </span>
+    
+                    </div>
+                    <div>
+                        <div class="flex justify-between my-3 md:mt-0">
+                            <span class="font-bold">My Basket (<%= list.length%>)</span>
+                            <span id="basket-total" class="font-bold">₹<%=payment.total%>.00</span>
+                        </div>
+                        <%- include("../user/productslistcart.ejs",{list:list,payment:payment,type:'ordersummary'}); -%>
+                    </div>
+                </div>
+                <div class="w-full">
+                    <div class=" md:w-full">
+                        <div class="px-3 mb-20">
+                            <%- include("../user/partials/paymentdetails.ejs"); -%>
+                        </div>
+                        <div class="flex justify-between px-2 fixed bottom-0 right-0 left-0 bg-slate-100 p-3 md:static">
+                            <div>
+                                <span id="ordersummarytotal" class="text-2xl font-bold block leading-6">₹<%=payment.total%>.00</span>
+                                <span id="ordersummarysaving" class="text-green-500 text-sm mt-[10px] ml-1">You save ₹<%=payment.total_discount%>.00</span>
+                            </div>
+                            <form action="/home/paymentcheckout" method="get">
+                                <button class=" h-max py-2.5 px-10 bg-[#1a91ff] rounded-full text-white">
+                                    Place Order
+                                </button>
+                            </form>
+                            
+                    
+                        </div>
+                    </div>
+                </div>
+
+
+                
+                
+            </div>
+            
+        </div>
+        
+        
+        
+    
+        
+    
+    </div>
+</div>
+<!-- footer -->
+<div class="hidden md:flex md:flex-col ">
+    
+    <div>
+        <%- include("../user/partials/footer.ejs"); -%>
+    </div>
+    
+</div>
+<%- include("../user/partials/close.ejs"); -%>
+
