@@ -1,0 +1,93 @@
+
+    <div class="flex flex-col gap-5">
+        <input type="hidden" name="id" id="" value="<%= details._id %>">
+        <div class="border-2 flex p-3 justify-between">
+            <div>
+                <label class="text-gray-400 text-sm" for="">Mobile Number*</label>
+                <div class="flex">
+                    <span class="block"><%= details.phone %></span>
+                    <span class="material-symbols-outlined text-green-600 text-lg ml-2">
+                        check_circle
+                    </span>
+                </div>
+                
+    
+            </div>
+            <div class="border-2 px-4 py-1.5 h-max">
+                <span class="text-sm">CHANGE</span>
+            </div>
+    
+        </div>
+        <!-- name --> 
+        <div class="w-full ">
+            <div class="bg-white ">
+                <label for="phone2" class="text-gray-400 ">
+                    Full Name
+                </label>
+            </div>
+            <div class="flex items-center px-2 w-full border-b-2">
+                <input name="profile_name" type="text" id="phone2" value="<%= details.name %>" required class="border-none w-full h-10 px-1 text-sm peer outline-none ">
+            </div>
+    
+            
+            
+        </div>
+        <!-- email --> 
+        <div class="w-full">
+            <div class="bg-white ">
+                <label for="email2" class="text-gray-400 ">
+                    Email
+                </label>
+            </div>
+            <div class="flex items-center px-2 w-full border-b-2">
+                <input name="profile_email" type="text" id="email2" value="<%= details.email %>" required class="w-full h-10 px-1 text-sm border-none outline-none ">
+            </div>
+            
+            
+            
+        </div>
+        <!-- birthday --> 
+        <div class="w-full ">
+            <div class="bg-white ">
+                <label for="dob2" class="text-gray-400 ">
+                    Date of birth (dd/mm/yyyy)
+                </label>
+            </div>
+            <div class="flex items-center px-2 w-full border-b-2">
+                <input name="profile_dob" type="date" value="<%= details.dob %>" id="dob2" required class="border-none w-full h-10 px-1 text-sm peer outline-none ">
+            </div>
+    
+            
+            
+        </div>
+        <h2 class="text-lg font-bold">Alternate Phone Number</h2>
+        <!-- alternate phone --> 
+        <div class="w-full">
+            <div class="">
+                <label for="altphone2" class="text-gray-400 ">
+                    Phone Number
+                </label>
+            </div>
+            <div class="flex items-center px-2 w-full border-b-2">
+                <span class="text-gray-400 mr-3">+91</span>
+                <input name="profile_altphone" type="text" id="altphone2" value="<%= details.alt_phone %>" required class="border-none w-full h-10 px-1 text-sm peer outline-none ">
+            </div>
+    
+            
+            
+        </div>
+        <!-- hintname --> 
+        <div class="w-full">
+            <div class="">
+                <label for="hint2" class="text-gray-400 ">
+                    Hint Name
+                </label>
+            </div>
+            <div class="flex items-center px-2 w-full border-b-2">
+                <input name="profile_altname" type="text" value="<%= details.alt_name %>" id="hint2" required class="border-none w-full h-10 px-1 text-sm peer outline-none ">
+            </div>
+    
+            
+            
+        </div>
+    </div>
