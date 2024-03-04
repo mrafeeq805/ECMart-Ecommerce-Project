@@ -1,0 +1,213 @@
+<!-- mobile view -->
+<%- include("../user/partials/head.ejs"); -%>
+
+<script src="/javascript/user/product.js"></script>
+<div class=" md:hidden">
+
+    <%- include("../user/partials/sortpopup.ejs",{category:'all'}); -%>
+    <%- include("../user/partials/filterpopup.ejs",{category:'all'}); -%>
+    
+    
+
+    <div class="flex shadow-lg shadow-gray-200 bg-white p-3 gap-5 justify-between">
+        <div class="flex gap-5">
+            <form action="/home">
+                <button class="material-symbols-outlined text-gray-500">
+                    arrow_back
+                </button>
+            </form>
+            
+            <h2 class=" text-gray-500 font-medium capitalize"> </h2>
+        </div>
+        <div class="flex gap-3">
+            <form action="/home/cart" method="get">
+                <button class="material-symbols-outlined text-gray-500">
+                    shopping_cart
+                </button>
+            </form>
+            
+        </div>
+        
+    
+    </div>
+    <div class="px-2 mt-3 flex flex-col h-full justify-between ">
+        <div class="">
+            <!-- search -->
+            <div class="">
+                <div class=" flex pl-3 items-center mt-3 bg-gray-100 rounded-lg">
+                    <input id="search-product" class="h-10 w-full bg-inherit px-3 border-none outline-none" type="text" placeholder="Search Products...">
+                    <svg onclick="searchProduct()" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="gray" class="bi bi-search mr-3" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+            
+                </div>
+            </div>
+            <!-- <div class="rounded-lg bg-gray-200 p-7 my-2">
+            
+            </div> -->
+
+            <div>
+                
+                <div class="mt-3">
+                    <div id="table-container">
+                        <%- include("../user/productslist.ejs",{list:data}); -%>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- sort & filter -->
+        <div class="flex bg-white absolute bottom-0 w-[95vw]">
+            <button onclick= "openSort()" class="py-4 flex items-center justify-center gap-2 w-full">
+                <span class="material-symbols-outlined">
+                    swap_vert
+                </span>
+                <span>SORT</span>
+            </button>
+            <button onclick="openFilter()" class="py-4 flex items-center justify-center gap-2 w-full">
+                <span class="material-symbols-outlined">
+                    page_info
+                </span>
+                <span>FILTER</span>
+            </button>
+
+        </div>
+        </div>
+        
+        
+        
+
+    </div>
+</div>
+<!-- Desktop view -->
+<div class="hidden md:flex md:flex-col">
+    <!-- search -->
+    <div class="hidden md:flex w-full">
+        <%- include("../user/partials/desktoptitlebar.ejs"); -%>
+    
+    </div>
+    <div class="pt-24 px-8">
+
+        <div>
+            <span class="text-gray-500">Home / </span>
+            <span class="text-lg font-medium">Search</span>
+        </div>
+        <!-- <span class="text-lg font-medium">- </span> -->
+        <!-- <span class="text-gray-400 text-lg font-medium"> items</span> -->
+        <!-- filter sort -->
+        <div class="flex w-full mt-2 items-center justify-between border-b-[1px] pb-3">
+            <div>
+                <span class="text-xl">FILTERS</span>
+            </div>
+            <div class="border-2 flex rounded-md p-3 items-center w-3/12 justify-between">
+                <div>
+                    <span>Sort By : </span>
+                </div>
+                <select  onchange="dessortProduct()" class="font-medium" name="" id="dessort-select">
+                    <option value="Latest">Latest</option>
+                    <option value="Oldest">Oldest</option>
+                    <option value="Discount">Discount</option>
+                    <option value="HL">Price : High to Low</option>
+                    <option value="LH">Price : Low to High</option>
+                </select>
+            </div>
+        </div>
+        <!-- filter tab & products -->
+        <div class="w-full flex">
+            <!-- filter -->
+            <div class="w-56 border-r-[1px] h-screen">
+                <div  class="flex w-full gap-4 py-3  mt-3 pr-2">
+                    <button onclick="desclearFilter()" class="border-2 p-2 flex justify-center items-center w-full">
+                        <span class="font-medium text-gray-500">CLEAR</span>
+                    </button>
+                    <input type="hidden" name="" id="desfilter-category" value="<%= category %>">
+                    <button  type="button" onclick="desfilterProduct()" class="p-2 border-2 w-full font-medium flex justify-center items-center text-red-500">
+                        APPLY
+                    </button>
+                </div>
+                <div class="my-3">
+                    <!-- Brands -->
+                    <div class="border-b-[1px] pb-4">
+                        <span class="text-lg font-medium">BRANDS</span>
+                        <div class="mt-1">
+                            <ul class="w-48 text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                <%Object.keys(details.brandscount).forEach(item=>{ %>
+                                    <li class="w-full  rounded-t-lg dark:border-gray-600">
+                                        <div class="flex items-center ">
+                                            <input name="check" onchange="desbrandSelected(this)" id="des<%= item %>" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <span  class=" py-1  ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"><%= item %></span><span class=" text-gray-600 text-xs ml-2">( <%= details.brandscount[item] %> )</span>
+                                        </div>
+                                    </li>
+                                <%})%>
+                                
+    
+                            </ul>
+                        
+                        </div>
+                    </div>
+                    <input type="hidden" value="[]" name="" id="desbrand-inp">
+                    <!-- Price -->
+                    <div class="border-b-[1px] pb-4 mt-4">
+                        <span class="text-lg font-medium">PRICE</span>
+                        <div class="mt-1">
+                            <ul class="w-48 text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                <%  var ranges = ['0-299', '300-499', '500-699', '700-999', '1000 +'] %>
+                                <%  var rangeslbl = ['Rs. 299 and Below', 'Rs. 300 to Rs. 499', 'Rs. 500 to Rs. 699', 'Rs. 700 to Rs. 999', 'Rs. 1000 and Above'] %>
+                                <% details.pricecount.forEach((item,index)=>{%>
+                                    <li class="w-full  rounded-t-lg dark:border-gray-600">
+                                        <div class="flex items-center ">
+                                            <input name="check" onchange="despriceSelected(this)" id="des<%= ranges[index]%>" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <span  class=" py-1  ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"><%= rangeslbl[index]%></span><span class=" text-gray-600 text-xs ml-2">( <%= item[ranges[index]] == undefined ? 0 : item[ranges[index]] %> )</span>
+                                        </div>
+                                    </li>
+                                <%})%>
+    
+                            </ul>
+                        
+                        </div>
+                    </div>
+                    <input type="hidden" value="[]" name="" id="desprice-inp">
+                    <!-- discount-->
+                    <div class="border-b-[1px] pb-4 mt-4">
+                        <span class="text-lg font-medium">DISCOUNT RANGE</span>
+                        <div class="mt-1">
+                            <ul class="w-48 text-sm font-medium text-gray-900 bg-white rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                <%  var ranges = ['0-10', '11-20', '21-30', '31-40','41-50', '51 +'] %>
+                                <%  var rangeslbl = ['10% and Below', '11% to 20%', '21% to 30%', '31% to 40%','41% to 50%', '51% and Above'] %>
+                                <% details.discountcount.forEach((item,index)=>{%>
+                                    <li class="w-full  rounded-t-lg dark:border-gray-600">
+                                        <div class="flex items-center ">
+                                            <input name="check" onchange="desdiscountSelected(this)" id="des<%= ranges[index]%>" id="checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                            <span  class=" py-1  ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"><%= rangeslbl[index]%></span><span class=" text-gray-600 text-xs ml-2">( <%= item[ranges[index]] == undefined ? 0 : item[ranges[index]] %> )</span>
+                                        </div>
+                                    </li>
+                                <%})%>
+    
+                            </ul>
+                        
+                        </div>
+                    </div>
+                    <input type="hidden" value="[]" name="" id="desdiscount-inp">
+                    
+                </div>
+                
+
+            </div>
+            <!-- products -->
+            <div id="table-container-des" class="p-5">
+                <%- include("../user/productslist.ejs",{list:data}); -%>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- footer -->
+    <div class="hidden md:flex md:flex-col ">
+    
+        <div>
+            <%- include("../user/partials/footer.ejs"); -%>
+        </div>
+        
+    </div>
+
+</div>
+<%- include("../user/partials/close.ejs"); -%>
