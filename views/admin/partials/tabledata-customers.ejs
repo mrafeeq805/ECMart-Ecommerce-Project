@@ -1,0 +1,41 @@
+<% list.forEach((data,index)=>{ %>
+
+    
+    
+    <tr class="border-b-2 border-spacing-3 ">
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 mx-2 w-10"><%= index+1  %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 mx-2 w-10"><%= data.customer_id  %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2"><%= data.phone %></td>
+        
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2"><%= data.name %></td>
+        
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-10"><%= data.email %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-16"><%= data.joined %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-10"><%= data.purchases %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-16">
+            <% if(data.status=='Active') {%>
+                <div class="rounded-full bg-green-100 p-[2px] flex justify-center items-center px-3">
+                    <span class="text-green-500 text-sm"><%= data.status %></span>
+                </div>
+            <% } else { %>
+                <div class="rounded-full bg-red-100 p-[2px] flex justify-center items-center px-3">
+                    <span class="text-red-500 text-sm"><%= data.status %></span>
+                </div>
+            <% }  %>
+
+        </td>
+        
+        
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2">
+            <div class="flex">
+                <button id="<%= data._id %>" onclick="showEdit(this)" class="material-symbols-outlined text-[#1a91ff] mr-1">
+                    edit
+                </button>
+                <button id="<%= data._id %>-<%= data.customer_id %>" onclick="showDelete(this)" class="material-symbols-outlined text-red-500">
+                    delete
+                </button>
+            </div>
+            
+        </td>
+    </tr>
+    <% }) %>

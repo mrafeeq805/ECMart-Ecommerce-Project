@@ -1,0 +1,88 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+<div class="flex shadow-lg shadow-gray-200 bg-white pr-3 gap-5 justify-between items-center p-2 w-full">
+    <div class="flex gap-5 md:gap-8 items-center w-full">
+        
+        <div class="h-12 ">
+          <img class="h-full object-cover" src="/images/ecmart.png" alt="logo">
+        </div>
+        <!-- search -->
+        <div class="px-3 hidden md:flex md:w-6/12">
+            <div class="bg-white flex px-3 items-center mt-3 border-2 rounded-md md:w-full">
+              <form class="flex justify-between w-full" action="/home/searchProduct" method="post">
+                <input name="search" class="border-none h-10 w-full bg-inherit px-3 " type="text" placeholder="Search Compents and Projects...">
+                <button type="submit" class="">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="gray" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+                </button>
+              </form>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center justify-end gap-3 w-max">
+        <form action="/home/search" method="get">
+            <button class="md:hidden material-symbols-outlined text-gray-500 md:5xl">
+                search
+            </button>
+        </form>
+        <form action="/home/profile" method="get">
+            <button class="material-symbols-outlined text-gray-500 md:5xl md:hidden">
+                person
+            </button>
+        </form>
+        <button data-popover-target="popover-bottom" data-popover-placement="bottom" type="button" class="hidden md:block material-symbols-outlined text-gray-500 text-3xl">person</button>
+        <div data-popover id="popover-bottom" role="tooltip" class="absolute z-50 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+              <div class="<%if(locals.phone){%>block  <%}else{%> hidden <%}%>px-4 py-3 text-sm text-gray-900 dark:text-white">
+                <div class="font-medium ">Pro User</div>
+                <div class="truncate"><%= locals.phone%></div>
+              </div>
+              
+              <div class="<%if(locals.phone){%>hidden  <%}else{%> block <%}%> space-y-3 px-4 py-3 text-sm text-gray-900 dark:text-white">
+                <div class="font-medium my-3">Not logged in ?</div>
+                <a href="/home/login" class=" text-red-500 border-2 p-2 px-4 mb-3">Login</a>
+              </div>
+             
+              <ul class="<%if(locals.phone){%>block  <%}else{%> hidden <%}%>py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
+                <li>
+                  <a href="/home/myorders" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    My Orders
+                  </a>
+                </li>
+                <li>
+                  <a href="/home/wishlist" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    Wishlist
+                  </a>
+                </li>
+                <li>
+                  <a href="/home/addressmanager" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    Address Manager
+                  </a>
+                </li>
+                <li>
+                    <a href="/home/editprofile" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                      Edit Profile
+                    </a>
+                  </li>
+              </ul>
+              <div class="<%if(locals.phone){%>block  <%}else{%> hidden <%}%>py-2">
+                <form action="/home/logout" method="post">
+                    <button class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                        Sign out
+                    </button>
+                </form>
+
+              </div>
+            
+        </div>
+
+        
+        
+            <a href="/home/cart" class="material-symbols-outlined text-gray-500 md:3xl">
+                shopping_cart
+            </a>
+        
+
+    </div>
+    
+
+</div>

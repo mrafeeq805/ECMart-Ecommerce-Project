@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,600;6..12,700&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+</head>
+<body class="bg-gray-50 ">
+    <!-- container -->
+    <div class="flex">
+        <div>
+            <!-- sidebar -->
+            <div class="px-5 flex flex-col gap-2 bg-white h-screen">
+                <h1 class="text-blue-500 text-3xl my-4">LOGO</h1>
+                <!-- dashboard -->
+                <div class="flex gap-4 bg-blue-100 p-2 rounded-md">
+                    <span class="material-symbols-outlined text-[#1a91ff]">
+                        dashboard
+                    </span>
+                    <span class="text-[#1a91ff] font-Ubuntu font-medium">
+                        Dashboard
+                    </span> 
+                </div>
+                <!-- products -->
+                <div class="flex gap-4  p-2 rounded-md">
+                    <span class="material-symbols-outlined text-[#00000060]">
+                        inventory_2
+                    </span>
+                    <span class="text-[#00000080] font-Ubuntu font-medium">
+                        Products
+                    </span> 
+                </div>
+                <!-- orders -->
+                <div class="flex gap-4  p-2 rounded-md">
+                    <span class="material-symbols-outlined text-[#00000060]">
+                        shopping_cart
+                    </span>
+                    <span class="text-[#00000080] font-Ubuntu font-medium">
+                        Orders
+                    </span> 
+                </div>
+                <!-- customers -->
+                <div class="flex gap-4  p-2 rounded-md">
+                    <span class="material-symbols-outlined text-[#00000060]">
+                        account_circle
+                    </span>
+                    <span class="text-[#00000080] font-Ubuntu font-medium">
+                        Customers
+                    </span> 
+                </div>
+                <!-- transactions -->
+                <div class="flex gap-4  p-2 rounded-md">
+                    <span class="material-symbols-outlined text-[#00000060]">
+                        payments
+                    </span>
+                    <span class="text-[#00000080] font-Ubuntu font-medium">
+                        Transactions
+                    </span> 
+                </div>
+                <!-- coupons -->
+                <div class="flex gap-4  p-2 rounded-md">
+                    <span class="material-symbols-outlined text-[#00000060]">
+                        sell
+                    </span>
+                    <span class="text-[#00000080] font-Ubuntu font-medium">
+                        Coupons
+                    </span> 
+                </div>
+                <!-- banners -->
+                <div class="flex gap-4  p-2 rounded-md">
+                    <span class="material-symbols-outlined text-[#00000060]">
+                        ad_group
+                    </span>
+                    <span class="text-[#00000080] font-Ubuntu font-medium">
+                        Banners
+                    </span> 
+                </div>
+                <!-- categories -->
+                <div class="flex gap-4  p-2 rounded-md">
+                    <span class="material-symbols-outlined text-[#00000060]">
+                        apps
+                    </span>
+                    <span class="text-[#00000080] font-Ubuntu font-medium">
+                        Categories
+                    </span> 
+                </div>
+    
+    
+            </div>
+    
+       </div>
+       <div class="px-8 py-16 w-full">
+            <%- include("C:/Users/muham/Desktop/Ecommerce/views/admin/categories.ejs"); -%>
+       </div>
+       
+    </div>
+   
+   
+    
+</body>
+</html>

@@ -1,0 +1,53 @@
+<% list.forEach((data,index)=>{ %>
+
+    
+    
+    <tr class="border-b-2 border-spacing-3 ">
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 mx-2 w-10"><%= index+1  %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 mx-2 w-10"><%= data.order_id  %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2"><%= data.products[0].title %></td>
+        
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2"><%= data.phone %></td>
+        
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-10"><%= data.date %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-16">₹<%= data.total%>.00</td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-16">
+            <% if(data.status=='Delivered') {%>
+                <div class="rounded-full bg-green-100 p-[2px] flex justify-center items-center px-3">
+                    <span class="text-green-500 text-sm"><%= data.status %></span>
+                </div>
+                
+            <% } else if (data.status=='Cancelled') {%>
+                <div class="rounded-full bg-red-100 p-[2px] flex justify-center items-center px-3">
+                    <span class="text-red-500 text-sm"><%= data.status %></span>
+                </div>
+            <% } else if (data.status=='Shipped') {%>
+                <div class="rounded-full bg-violet-100 p-[2px] flex justify-center items-center px-3">
+                    <span class="text-violet-500 text-sm"><%= data.status %></span>
+                </div>
+            <% } else if (data.status=='Out Of Delivery') {%>
+                <div class="rounded-full bg-orange-100 p-[2px] flex justify-center items-center px-3">
+                    <span class="text-orange-500 text-sm"><%= data.status %></span>
+                </div>
+            <% } else if (data.status=='Processing') {%>
+                <div class="rounded-full bg-blue-100 p-[2px] flex justify-center items-center px-3">
+                    <span class="text-blue-500 text-sm"><%= data.status %></span>
+                </div>
+            <% }  %>
+
+        </td>
+        
+        
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2">
+            <div class="flex">
+                <button id="<%= data._id %>" onclick="showDetails(this)" class="material-symbols-outlined text-[#1a91ff] mr-1">
+                    visibility
+                </button>
+                <button id="<%= data._id %>-<%= data.order_id %>" onclick="showDelete(this)" class="material-symbols-outlined text-red-500">
+                    delete
+                </button>
+            </div>
+            
+        </td>
+    </tr>
+    <% }) %>

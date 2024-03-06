@@ -1,0 +1,45 @@
+<% list.forEach((data,index)=>{ %>
+
+    
+    
+    <tr class="border-b-2 border-spacing-2 ">
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 mx-2 w-10"><%= index+1  %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2"><%= data.category_id %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 mx-2 ">
+            <div class="flex h-10 items-center gap-4">
+                <img class="h-8 inline" src="<%= data.icon %>" alt="img">
+                <span class=" block"><%= data.name %></span>
+            </div>
+            
+            
+        </td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2"><%= data.mainCategory %></td>
+        
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-10"><%= data.products %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-16">
+            <% if(data.status=='Listed') {%>
+                <div class="rounded-full bg-green-100 p-[2px] flex justify-center items-center px-3">
+                    <span class="text-green-500 text-sm"><%= data.status %></span>
+                </div>
+            <% } else { %>
+                <div class="rounded-full bg-red-100 p-[2px] flex justify-center items-center px-3">
+                    <span class="text-red-500 text-sm"><%= data.status %></span>
+                </div>
+            <% }  %>
+
+        </td>
+        
+        
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2">
+            <div class="flex">
+                <button id="<%= data._id %>" onclick="showEdit(this)" class="material-symbols-outlined text-[#1a91ff] mr-1">
+                    edit
+                </button>
+                <button id="<%= data._id %>-<%= data.category_id %>" onclick="showDelete(this)" class="material-symbols-outlined text-red-500">
+                    delete
+                </button>
+            </div>
+            
+        </td>
+    </tr>
+    <% }) %>

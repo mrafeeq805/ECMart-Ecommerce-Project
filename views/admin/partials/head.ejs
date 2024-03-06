@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,600;6..12,700&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+</head>
+<body class="bg-gray-50 ">
+    <!-- container -->
+    <div class="flex">
+        <div>
+            <!-- sidebar -->
+            <div class="px-5 flex flex-col gap-2 bg-white h-screen">
+                <form action="/admin/logout" method="post">
+                    <div class="flex justify-between">
+                        <h1 class="text-blue-500 text-3xl my-4">LOGO</h1>
+                        
+                        <button class="material-symbols-outlined text-red-500">
+                            logout
+                        </button>
+                        
+                    </div>
+                </form>
+                
+                
+                <!-- dashboard -->
+                <% if(page=='dashboard'){%>
+                    <a href="/admin/dashboard" class="flex gap-4 bg-blue-100 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#1a91ff]">
+                            dashboard
+                        </span>
+                        <span class="text-[#1a91ff] font-Ubuntu font-medium">
+                            Dashboard
+                        </span>
+                    </a>
+                <% }else{%>
+                    <a href="/admin/dashboard" class="flex gap-4 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#00000060]">
+                            dashboard
+                        </span>
+                        <span class="text-[#00000080] font-Ubuntu font-medium">
+                            Dashboard
+                        </span> 
+                    </a>
+                <%}%>
+                
+                <!-- products -->
+                <% if(page=='products'){%>
+                    <a href="/admin/products" class="flex gap-4 bg-blue-100 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#1a91ff]">
+                            inventory_2
+                        </span>
+                        <span class="text-[#1a91ff] font-Ubuntu font-medium">
+                            Products
+                        </span> 
+                    </a>
+                <% }else{%>
+                    <a href="/admin/products" class="flex gap-4 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#00000060]">
+                            inventory_2
+                        </span>
+                        <span class="text-[#00000080] font-Ubuntu font-medium">
+                            Products
+                        </span> 
+                    </a>
+                <%}%>
+                
+                <!-- orders -->
+                <% if(page=='orders'){%>
+                    <a href="/admin/orders" class="flex gap-4 bg-blue-100 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#1a91ff]">
+                            shopping_cart
+                        </span>
+                        <span class="text-[#1a91ff] font-Ubuntu font-medium">
+                            Orders
+                        </span> 
+                    </a>
+                <% }else{%>
+                    <a href="/admin/orders" class="flex gap-4 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#00000060]">
+                            shopping_cart
+                        </span>
+                        <span class="text-[#00000080] font-Ubuntu font-medium">
+                            Orders
+                        </span> 
+                    </a>
+                <%}%>
+                
+                <!-- customers -->
+                <% if(page=='customers'){%>
+                    <a href="/admin/customers" class="flex gap-4 bg-blue-100 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#1a91ff]">
+                            account_circle
+                        </span>
+                        <span class="text-[#1a91ff] font-Ubuntu font-medium">
+                            Customers
+                        </span> 
+                    </a>
+                <% }else{%>
+                    <a href="/admin/customers" class="flex gap-4 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#00000060]">
+                            account_circle
+                        </span>
+                        <span class="text-[#00000080] font-Ubuntu font-medium">
+                            Customers
+                        </span> 
+                    </a>
+                <%}%>
+                
+                <!-- transactions -->
+                <% if(page=='transactions'){%>
+                    <a href="/admin/transactions" class="flex gap-4 bg-blue-100 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#1a91ff]">
+                            payments
+                        </span>
+                        <span class="text-[rgb(26,145,255)] font-Ubuntu font-medium">
+                            Transactions
+                        </span> 
+                    </a>
+                <% }else{%>
+                    <a href="/admin/transactions" class="flex gap-4 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#00000060]">
+                            payments
+                        </span>
+                        <span class="text-[#00000080] font-Ubuntu font-medium">
+                            Transactions
+                        </span> 
+                    </a>
+                <%}%>
+                
+                <!-- coupons -->
+                
+                
+                <!-- banners -->
+                
+                    <!-- <a href="" class="flex gap-4 bg-blue-100 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#1a91ff]">
+                            ad_group
+                        </span>
+                        <span class="text-[#1a91ff] font-Ubuntu font-medium">
+                            Banners
+                        </span> 
+                    </a>
+                
+                    <a href="" class="flex gap-4 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#00000060]">
+                            ad_group
+                        </span>
+                        <span class="text-[#00000080] font-Ubuntu font-medium">
+                            Banners
+                        </span> 
+                    </a>
+                
+                 -->
+                <!-- categories -->
+                <% if(page=='categories'){%>
+                    <a href="/admin/categories" class="flex gap-4 bg-blue-100 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#1a91ff]">
+                            apps
+                        </span>
+                        <span class="text-[#1a91ff] font-Ubuntu font-medium">
+                            Categories
+                        </span> 
+                    </a>
+                <% }else{%>
+                    <a href="/admin/categories" class="flex gap-4 p-2 rounded-md">
+                        <span class="material-symbols-outlined text-[#00000060]">
+                            apps
+                        </span>
+                        <span class="text-[#00000080] font-Ubuntu font-medium">
+                            Categories
+                        </span> 
+                    </a>
+                <%}%>
+
+    
+    
+            </div>
+    
+       </div>
+       <div class="px-8 py-16 w-full">

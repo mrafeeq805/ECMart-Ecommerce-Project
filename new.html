@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+  <style>
+    /* Additional styling for the message */
+    .cart-message {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center h-screen">
+
+  <button id="addToCartButton" class="relative bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-transform transform hover:scale-110">
+    Add to Cart
+    <div id="cartMessage" class="cart-message">Item added to cart!</div>
+  </button>
+
+  <script>
+    const addToCartButton = document.getElementById('addToCartButton');
+    const cartMessage = document.getElementById('cartMessage');
+
+    addToCartButton.addEventListener('click', () => {
+        Toastify({
+  text: "This is a toast",
+  duration: 3000,
+  destination: "https://github.com/apvarun/toastify-js",
+  newWindow: true,
+  close: true,
+  gravity: "bottom", // `top` or `bottom`
+  position: "center", // `left`, `center` or `right`
+  stopOnFocus: true, // Prevents dismissing of toast on hover
+  style: {
+    background: "black",
+  },
+  onClick: function(){} // Callback after click
+}).showToast();
+    });
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<% list.forEach((data,index)=>{ %>
+
+    
+    
+    <tr class="border-b-2 border-spacing-3 ">
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 mx-2 w-10"><%= index+1  %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 mx-2 w-10"><%= data.transaction_id  %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2"><%= data.payment_id %></td>
+        
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2"><%= data.phone %></td>
+        
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-10"><%= data.method %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-16"><%= data.date %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-10"><%= data.amount %></td>
+        <td class="text-[#00000070] border-b-[1px] border-slate-300 px-2 w-16">
+            <% if(data.status=='captured') {%>
+                <div class="rounded-full bg-green-100 p-[2px] flex justify-center items-center px-3">
+                    <span class="text-green-500 text-sm"><%= data.status %></span>
+                </div>
+            <% } else { %>
+                <div class="rounded-full bg-red-100 p-[2px] flex justify-center items-center px-3">
+                    <span class="text-red-500 text-sm"><%= data.status %></span>
+                </div>
+            <% }  %>
+
+        </td>
+        
+        
+        
+    </tr>
+    <% }) %>
