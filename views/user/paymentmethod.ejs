@@ -1,0 +1,414 @@
+<%- include("../user/partials/head.ejs"); -%>
+<!-- search -->
+<div class="hidden md:flex w-full">
+    <%- include("../user/partials/desktoptitlebar.ejs"); -%>
+
+</div>
+<div class="my-6 px-16 hidden md:block">
+    <a href="/home" class="text-gray-500">Home </a>
+    <a href="/home/cart" class="text-gray-500">/ Cart </a>
+    <a href="/home/cartcheckout" class="text-gray-500">/ Select Address </a>
+    
+    <span class="text-gray-500">/ Order Summary </span>
+    <span class="text-lg font-medium">/ Payment</span>
+</div>
+
+<div class=" w-full  h-full md:mt-10">
+    <div class="flex shadow-lg shadow-gray-200 bg-white p-3 gap-5 justify-between md:hidden">
+        <div class="flex gap-5">
+            <form action="/home"></form>
+            <button class="material-symbols-outlined text-gray-500">
+                arrow_back
+            </button>
+            <h2 class=" text-gray-500 font-medium">Payment </h2>
+        </div>
+        <div class="flex gap-3">
+            
+            <!-- <button class="material-symbols-outlined text-gray-500">
+                shopping_cart
+            </button> -->
+        </div>
+        
+    
+    </div>
+    <div class="px-2 pt-4 pb-2 flex flex-col justify-between mt-4 ">
+        <div class="w-full">
+            <!-- status bar -->
+            <div class="w-full ">
+                <div class="flex items-center justify-center gap-2 px-2 pt-2">
+                    <div class="h-[25px] w-[25px] md:h-[30px] md:w-[30px] rounded-full border-blue-400 border-[1px] flex justify-center items-center">
+                        <span class="material-symbols-outlined text-lg text-blue-400">
+                            done
+                        </span>
+                    </div>
+                    <div class="h-[0.05em] bg-gray-300 w-24 md:w-44"></div>
+                    <div class="h-[25px] w-[25px] md:h-[30px] md:w-[30px] rounded-full border-blue-400 border-[1px] flex justify-center items-center">
+                        <span class="material-symbols-outlined text-lg text-blue-400">
+                            done
+                        </span>
+                    </div>
+                    <div class="h-[0.05em] bg-gray-300 w-24 md:w-44"></div>
+                    <div class="h-[25px] w-[25px] md:h-[30px] md:w-[30px] rounded-full bg-blue-400 border-[1px] flex justify-center items-center">
+                        <label class="text-xs text-white">3</label>
+                    </div>
+                    
+                    
+                </div>
+                <div class="flex items-center gap-[72px] justify-center w-full mb-2 pb-2 md:gap-[158px]">
+                    <span class="text-xs">Address</span>
+                    
+                    <span class="text-xs ">Order Summary</span>
+                    
+                    <span class="text-xs ">Payment</span>
+        
+                </div>
+                
+            </div>
+            <div class="md:flex md:px-32 md:gap-x-16 md:gap-y-4">
+                <div class="w-full">
+                    <!-- upi -->
+                    <div class="px-2 space-y-2">
+                        <h1 class="text-lg text-gray-400 font-medium my-3">UPI</h1>
+                        <!-- 1st -->
+                        <div class="flex justify-between rounded-md bg-white p-2">
+                            <div class="flex">
+                                <div class="rounded-md border-2 w-14 py-3 px-2">
+                                    <img src="/images/Google_Pay_Logo.png" alt="icon">
+                                </div>
+                                <div class="ml-4">
+                                    <span class="text-lg font-medium block">Pay by any UPI app</span>
+                                    <span class="text-sm text-gray-400 ">Use any UPI app to pay</span>
+                                </div>
+                            </div>
+                    
+                            <button onclick="pay('upi')" class="h-[35px] w-[35px] rounded-full border-2 flex justify-center items-center">
+                                <span class="material-symbols-outlined text-gray-300">
+                                    chevron_right
+                                </span>
+                            </button>
+                        </div>
+
+                    </div>
+                    <!-- other -->
+                    <div class="px-2 space-y-2">
+                        <h1 class="text-lg text-gray-400 font-medium my-5">Other Payment Methods</h1>
+                        <!-- 1st -->
+                        <div class="flex justify-between rounded-md bg-white p-2">
+                            <div class="flex">
+                                <div class="rounded-md border-2 w-14 py-3 px-2">
+                                    <img src="/images/atm-card.png" alt="icon">
+                                </div>
+                                <div class="ml-4">
+                                    <span class="text-lg font-medium block">Debit Card / Credit Card</span>
+                                    <span class="text-sm text-gray-400 ">Use any Bank Debit / Credit cards pay</span>
+                                </div>
+                            </div>
+                    
+                            <button onclick="pay('card')" class="h-[35px] w-[35px] rounded-full border-2 flex justify-center items-center">
+                                <span class="material-symbols-outlined text-gray-300">
+                                    chevron_right
+                                </span>
+                            </button>
+                        </div>
+                        <!-- 2nd -->
+                        <div class="flex justify-between rounded-md bg-white p-2">
+                            <div class="flex">
+                                <div class="rounded-md border-2 w-14 py-3 px-2">
+                                    <img src="/images/mobile-banking.png" alt="icon">
+                                </div>
+                                <div class="ml-4">
+                                    <span class="text-lg font-medium block">Netbanking</span>
+                                    <span class="text-sm text-gray-400 ">Use Netbanking to pay</span>
+                                </div>
+                            </div>
+                    
+                            <button onclick="pay('netbanking')" class="h-[35px] w-[35px] rounded-full border-2 flex justify-center items-center">
+                                <span class="material-symbols-outlined text-gray-300">
+                                    chevron_right
+                                </span>
+                            </button>
+                        </div>
+                        <!-- 3rd -->
+                        <div class="flex justify-between rounded-md bg-white p-2">
+                            <div class="flex">
+                                <div class="rounded-md border-2 w-14 py-3 px-2">
+                                    <img src="/images/cash-on-delivery.png" alt="icon">
+                                </div>
+                                <div class="ml-4">
+                                    <span class="text-lg font-medium block">Cash On Delivery</span>
+                                    <span class="text-sm text-gray-400 ">Pay cash on Delivery</span>
+                                </div>
+                            </div>
+                            <script src="/javascript/user/cart.js"></script>
+                            <button onclick="setCashOnDelivery()" class="h-[35px] w-[35px] rounded-full border-2 flex justify-center items-center">
+                                <span class="material-symbols-outlined text-gray-300">
+                                    chevron_right
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex md:flex-col w-full">
+                    <!-- coupons -->
+                    <div class=" hidden border-2 p-3 mt-4">
+                        <div class="flex justify-between items-center mb-1">
+                            <div class="flex gap-6 items-center">
+                                <span class="material-symbols-outlined text-gray-400 text-2xl">
+                                    sell
+                                </span>
+                                <span class=" font-medium">Coupons</span>
+                            </div>
+        
+                            <button class="bg-[#1a91ff] p-1 px-4 text-white">Apply</button>
+
+
+                        </div>
+                        <span class="text-sm text-gray-500">Upto ₹300 off on first order </span>
+
+                    </div>
+                    <div>
+                        <%- include("../user/partials/paymentdetails.ejs",{payment:payment}); -%>
+                    </div>
+
+                    <div class="flex justify-between px-2">
+                        <div>
+                            <span class="text-2xl font-bold block leading-6">₹<%= payment.total %>.00</span>
+                            <span class="text-green-500 text-sm mt-[10px] ml-1">You save ₹<%= payment.total_discount %>.00</span>
+                        </div>
+                        <button onclick="pay('all')" class="h-max py-2.5 px-10 bg-[#1a91ff] rounded-full text-white">
+                            Place Order
+                        </button>
+    
+                    </div>
+                    
+
+
+                <div>
+                
+            </div>
+            
+            
+        </div>
+        <div class="md:hidden flex justify-between px-2 fixed bottom-0 right-0 left-0 bg-slate-100 p-3 md:static">
+            <div class="w-full">
+                <span class="text-2xl font-bold block leading-6">₹<%= payment.total %>.00</span>
+                <span class="text-green-500 text-sm mt-[10px] ml-1">You save ₹<%= payment.total_discount %>.00</span>
+            </div>
+            <button type="button" id="pay-now" onclick="pay('all')" class="h-max py-2.5 px-10 bg-[#1a91ff] rounded-full text-white w-full">
+                Pay Now
+            </button>
+            <form id="verify" action="/home/verifypayment" method="post">
+                <input name="order_id" id="order_id" type="hidden">
+                <input name="payment_id" id="payment_id" type="hidden">
+                <input type="hidden" name="payment_method" id="payment_method">
+            </form>
+    
+        </div>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+        
+            async function pay(method){
+                await fetch('/home/payonline', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        amount: 500
+                    })
+                })
+                    .then(async (response) => {
+                        if (response.status == 200) {
+                            let res = await response.json()
+                            var options={}
+                            if(method == 'all'){
+                                options = {
+                                    "key":res.key_id, // Enter the Key ID generated from the Dashboard
+                                    "amount": res.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                                    "currency": "INR",
+                                    "name": 'texT',
+                                    "description": "Test Transaction",
+                                    "order_id": res.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                                    "handler": function (result) {
+                                        console.log(result);
+                                        document.getElementById('order_id').value = result.razorpay_order_id
+                                        document.getElementById('payment_id').value = result.razorpay_payment_id
+                                        document.getElementById('payment_method').value = result.razorpay_method
+                                        document.getElementById('verify').submit()
+              
+                                    },
+                                    "prefill": {
+                                        "name": res.name,
+                                        "email": res.email,
+                                        "contact": res.mobile
+                                    },
+                                    "theme": {
+                                        "color": "#3399cc"
+                                    }
+
+                                };
+                            }else if(method == 'card'){
+                                options = {
+                                    "key":res.key_id, // Enter the Key ID generated from the Dashboard
+                                    "amount": res.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                                    "currency": "INR",
+                                    "name": 'texT',
+                                    "description": "Test Transaction",
+                                    "order_id": res.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                                    "handler": function (result) {
+                                        console.log(result);
+                                        document.getElementById('order_id').value = result.razorpay_order_id
+                                        document.getElementById('payment_id').value = result.razorpay_payment_id
+                                        document.getElementById('verify').submit()
+              
+                                    },
+                                    "prefill": {
+                                        "name": res.name,
+                                        "email": res.email,
+                                        "contact": res.mobile
+                                    },
+                                    "theme": {
+                                        "color": "#3399cc"
+                                    },
+                                    config: {
+                                        display: {
+                                            blocks: {
+                                                banks: {
+                                                    name: 'Pay via Card',
+                                                    instruments: [
+                                                        {
+                                                             method: 'card'
+                                                        }
+                                                    ],
+                                                },
+                                            },
+                                            sequence: ['block.banks'],
+                                            preferences: {
+                                                show_default_blocks: false,
+                                            },
+                                        },
+                                    },
+
+                                };
+                            }else if(method == 'upi'){
+                                options = {
+                                    "key":res.key_id, // Enter the Key ID generated from the Dashboard
+                                    "amount": res.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                                    "currency": "INR",
+                                    "name": 'texT',
+                                    "description": "Test Transaction",
+                                    "order_id": res.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                                    "handler": function (result) {
+                                        console.log(result);
+                                        document.getElementById('order_id').value = result.razorpay_order_id
+                                        document.getElementById('payment_id').value = result.razorpay_payment_id
+                                        document.getElementById('verify').submit()
+              
+                                    },
+                                    "prefill": {
+                                        "name": res.name,
+                                        "email": res.email,
+                                        "contact": res.mobile
+                                    },
+                                    "theme": {
+                                        "color": "#3399cc"
+                                    },
+                                    config: {
+                                        display: {
+                                            blocks: {
+                                                banks: {
+                                                    name: 'Pay via UPI',
+                                                    instruments: [
+                                                        {
+                                                             method: 'upi'
+                                                        }
+                                                    ],
+                                                },
+                                            },
+                                            sequence: ['block.banks'],
+                                            preferences: {
+                                                show_default_blocks: false,
+                                            },
+                                        },
+                                    },
+
+                                };
+                            }else if(method == 'netbanking'){
+                                options = {
+                                    "key":res.key_id, // Enter the Key ID generated from the Dashboard
+                                    "amount": res.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                                    "currency": "INR",
+                                    "name": 'texT',
+                                    "description": "Test Transaction",
+                                    "order_id": res.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                                    "handler": function (result) {
+                                        console.log(result);
+                                        document.getElementById('order_id').value = result.razorpay_order_id
+                                        document.getElementById('payment_id').value = result.razorpay_payment_id
+                                        document.getElementById('verify').submit()
+              
+                                    },
+                                    "prefill": {
+                                        "name": res.name,
+                                        "email": res.email,
+                                        "contact": res.mobile
+                                    },
+                                    "theme": {
+                                        "color": "#3399cc"
+                                    },
+                                    config: {
+                                        display: {
+                                            blocks: {
+                                                banks: {
+                                                    name: 'Pay via Net Banking',
+                                                    instruments: [
+                                                        {
+                                                             method: 'netbanking'
+                                                        }
+                                                    ],
+                                                },
+                                            },
+                                            sequence: ['block.banks'],
+                                            preferences: {
+                                                show_default_blocks: false,
+                                            },
+                                        },
+                                    },
+
+                                };
+                            }
+                            
+
+                            var razorpay = new Razorpay(options)
+                            razorpay.open()
+                            razorpay.on('payment.failed', (res) => {
+                                alert("payment failed")
+                            })
+                        }
+                        else {
+                            alert("Online payment failed.")
+                        }
+                    })
+                    .catch((err) => console.log("error in online payment ", err))
+
+            }
+        </script>
+
+
+        
+    </div>
+
+    
+
+    
+
+</div>
+<!-- footer -->
+<div class="hidden md:flex md:flex-col ">
+    
+    <div>
+        <%- include("../user/partials/footer.ejs"); -%>
+    </div>
+    
+</div>
+<%- include("../user/partials/close.ejs"); -%>

@@ -1,0 +1,233 @@
+<%- include("../user/partials/head.ejs"); -%>
+<!-- search -->
+<div class="hidden md:flex w-full">
+    <%- include("../user/partials/desktoptitlebar.ejs"); -%>
+
+</div>
+<div class="my-6 px-16 hidden md:block">
+    <a href="/home" class="text-gray-500">Home </a>
+    <a href="/home/cart" class="text-gray-500">/ Cart </a>
+    <span class="text-lg font-medium">/ Select Address</span>
+</div>
+<div class="h-full md:mt-10 bg-gray-50 md:h-max">
+    <div class="md:hidden flex shadow-lg shadow-gray-200 bg-white p-3 gap-5 justify-between">
+        <div class="flex gap-5">
+            <form action="/home/cart">
+                <button class="material-symbols-outlined text-gray-500">
+                    arrow_back
+                </button>
+            </form>
+
+            <h2 class=" text-gray-500 font-medium">Select Delivery Address </h2>
+        </div>
+        <div class="flex gap-3">
+            <form action="/home/cart">
+                <button class="material-symbols-outlined text-gray-500">
+                    shopping_cart
+                </button>
+            </form>
+
+        </div>
+        
+    
+    </div>
+    <div class="px-2 w-full pt-4 pb-2 bg-gray-50 flex flex-col justify-between mt-4">
+        <div class="w-full">
+            <!-- status bar -->
+            <div class="w-full bg-white">
+                <div class="flex items-center justify-center gap-2 px-2 pt-2">
+                    <div class="h-[25px] w-[25px] md:w-[30px] md:h-[30px] rounded-full bg-blue-400  flex justify-center items-center">
+                        <label class="text-xs text-white">1</label>
+                    </div>
+                    <div class="h-[0.05em] bg-gray-300 w-24 md:w-44"></div>
+                    <div class="h-[25px] w-[25px] md:w-[30px] md:h-[30px] rounded-full border-blue-400 border-[1px] flex justify-center items-center">
+                        <label class="text-xs text-blue-400">2</label>
+                    </div>
+                    <div class="h-[0.05em] bg-gray-300 w-24 md:w-44"></div>
+                    <div class="h-[25px] w-[25px] md:w-[30px] md:h-[30px] rounded-full border-blue-400 border-[1px] flex justify-center items-center">
+                        <label class="text-xs text-blue-400">3</label>
+                    </div>
+                    
+                    
+                </div>
+                <div class="flex items-center gap-[72px] justify-center w-full bg-white mb-2 pb-2 md:gap-[158px]">
+                    <span class="text-xs">Address</span>
+                    
+                    <span class="text-xs ">Order Summary</span>
+                    
+                    <span class="text-xs ">Payment</span>
+        
+                </div>
+                
+            </div>
+            <script src="/javascript/user/address.js"></script>
+            <div class="flex md:px-32 md:gap-x-16 md:gap-y-4 w-full">
+                <div class="w-full space-y-3">
+                    <form action="/home/addaddress/check_add" method="get">
+                        <button class="bg-white mb-2 py-3 px-2 flex gap-4 ">
+                            <span class="material-symbols-outlined text-blue-400">
+                                add
+                            </span>
+                            <span class="text-blue-400 font-medium">Add New Address</span>
+                        </button>
+                    </form>
+                    
+                    <span id="selected-address"></span>
+
+                    <% list.forEach((item,index)=>{ %>
+
+                    
+                    <div class="bg-white rounded-lg px-3 pt-3 pb-4 flex items-start">
+                        <input name="select" id="select-<%= index %>" onchange="selectAddress(this)" class="text-blue-400 mr-3 mt-1.5" type="radio" 
+                        <%if(index ==0){%>
+                            checked>
+                        <%}else{%>
+                            >
+                        <%}%>
+
+
+
+                        <div class="flex flex-col items-start md:mr-12 w-full">
+                            <div class="flex gap-2 justify-between w-full ">
+                                <div class="w-max flex gap-4">
+                                    <span class="font-medium "><%= item.name %></span>
+                                    <div class="px-3 flex justify-center items-center bg-gray-100 w-max rounded-sm ">
+                                        <span class="text-gray-400 text-sm mt-[-3px] capitalize"><%= item.category %></span>
+                                    </div>
+                                </div>
+                                <form class=" flex justify-end" action="/home/showeditaddress" method="post">
+                                    <input name="id" type="hidden" value="<%= item._id%>">
+                                    <input type="hidden" name="meth" value="check_add">
+                                    <button class="px-3 flex justify-center items-center bg-white w-max rounded-sm pb-1 shadow-lg">
+                                        <span class="text-blue-400 text-sm font-medium ">Edit</span>
+                                    </button>
+                                </form>
+                                
+                            </div>
+                            
+                            <span class="block text-sm"><%= item.building %>, <%= item.area %></span>
+                            <span class="block text-sm"><%= item.city %> (dis), <%= item.state %></span>
+                            <span class="block text-sm"><%= item.pin %>, India</span>
+                            <span class="font-medium block text-sm mt-1">+91 <%= item.phone %></span>
+                            
+                        </div>
+                        
+                        
+                        
+                    </div>
+
+                    <% }) %>
+                    
+                </div>
+                <div id="h" class="hidden md:flex md:flex-col md:w-full">
+                    <!-- coupons -->
+                    <div class="border-2 p-3 mt-4 hidden md:w-full">
+                        <div class="flex justify-between items-center mb-1">
+                            <div class="flex gap-6 items-center">
+                                <span class="material-symbols-outlined text-gray-400 text-2xl">
+                                    sell
+                                </span>
+                                <span class=" font-medium">Coupons</span>
+                            </div>
+                        
+                            <button class="bg-[#1a91ff] p-1 px-4 text-white">Apply</button>
+
+
+                        </div>
+                        <span class="text-sm text-gray-500">Upto ₹300 off on first order </span>
+
+                    </div>
+                    <div class="hidden md:flex md:flex-col md:w-full">
+                        <div class="w-full">
+                            <%- include("../user/partials/paymentdetails.ejs"); -%>
+                        </div>
+                        <div class="flex justify-between px-2 md:mt-8 md:px-0 w-full">
+                            <div>
+                                <span id="cart-total" class="text-2xl font-bold block leading-6">₹<%= payment.total%>.00</span>
+                                <span id="cart-saving" class="text-green-500 text-sm mt-[10px] ml-1">You save ₹<%= payment.total_discount%>.00</span>
+                            </div>
+                            <form action="/home/addresscheckout" method="post">
+                                <input type="hidden" name="address" id="desaddr">
+                                <button class="h-max py-2.5 px-10 bg-[#1a91ff] rounded-full md:rounded text-white">
+                                    Place Order
+                                </button>
+                            </form>
+                            
+                    
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+            
+            
+        </div>
+        <form class="" action="/home/addresscheckout" method="post">
+            <input value="" type="hidden" name="address" id="addr">
+            <button type="submit" value="submit" onclick="return validateselect()" class="p-2 fixed bottom-0 right-0 left-0 md:hidden bg-[#1a91ff] rounded-full font-medium text-white">
+                Deliver Here
+            </button>
+        </form>
+        <script>
+            var addresslist = []
+            addresslist = JSON.parse('<%- JSON.stringify(list)%>')
+            const addre = document.getElementById('addr')
+            const desaddre = document.getElementById('desaddr')
+            addre.value = JSON.stringify(addresslist[0]);
+            desaddre.value = JSON.stringify(addresslist[0]);
+            function selectAddress(element){
+                const list = document.getElementsByName('select')
+                const addr = document.getElementById('addr')
+                const desaddr = document.getElementById('desaddr')
+                const selected = document.getElementById('selected-address')
+                list.forEach((item)=>{
+                    item.checked = false
+                })
+                element.checked = true
+                const addresslist = JSON.parse('<%- JSON.stringify(list)%>')
+                const selectedaddress = addresslist[element.id.split('-')[1]]
+                addr.value = JSON.stringify(selectedaddress);
+                desaddr.value = JSON.stringify(selectedaddress);
+            }
+
+            function validateselect(){
+                const addr = document.getElementById('addr')
+                const desaddr = document.getElementById('desaddr')
+                if(addresslist.length < 1){
+                    Toastify({
+                    text: "please add a address before checkout !",
+                    duration: 2000,
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "bottom", // `top` or `bottom`
+                    position: "center", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                      background: "black",
+                    },
+                    onClick: function(){} // Callback after click
+                  }).showToast();
+                    return false
+                }else{
+                    return true
+                }
+            }
+        </script>
+        
+    
+        
+    
+    </div>
+</div>
+<!-- footer -->
+<div class="hidden md:flex md:flex-col ">
+    
+    <div>
+        <%- include("../user/partials/footer.ejs"); -%>
+    </div>
+    
+</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<%- include("../user/partials/close.ejs"); -%>
