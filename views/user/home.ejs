@@ -12,9 +12,12 @@
         </div>
     </div>
     <!-- banners -->
-    <%- include("../user/partials/slidebanner.ejs"); -%>
+    <div class="xl:px-32 xl:pt-4 ">
+        <%- include("../user/partials/slidebanner.ejs"); -%>
+    </div>
+    
     <!-- components by category -->
-    <div class="w-full mt-3">
+    <div class="w-full mt-3 xl:px-32">
         <div class="flex gap-3 items-center px-2 justify-between">
             <span class=" text-gray-500 md:text-xl">Components By Cateogory</span>
             <a href="/allcategories" class="md:hidden text-[#1a91ff] text-sm md:text-lg">See All</a>
@@ -24,31 +27,36 @@
             
         </div>
     </div>
-    <div class="rounded-lg bg-gray-200 my-2 mx-2 h-32 w-full">
-        <img  src="/images/bann.png" class="h-full w-full object-cover" alt="...">
+    <div class="xl:px-32">
+        <div class="rounded-lg bg-gray-200 my-2 mx-2 md:h-40 h-24 xl:h-32 w-full ">
+            <img  src="/images/offer.png " class="h-full w-full object-cover rounded-lg" alt="...">
+        </div>
     </div>
+    
     <!-- latest components -->
-    <div class="w-full mt-3">
+    <div class="w-full mt-3 xl:px-32">
         <div class="flex gap-3 items-center px-2 justify-between">
             <span class=" text-gray-500 md:text-lg">Latest On Components</span>
             <!-- <span class="text-[#1a91ff] text-sm md:text-lg">See All</span> -->
         </div>
-        <div class="mt-3 flex flex-col gap-3 px-2">
+        <div class="">
             <%- include("../user/productslistsub.ejs",{productlist:productlist}); -%>
             
         </div>
     </div>
     
-    <div class="rounded-lg bg-gray-200 my-2 mx-2 h-32 w-full">
-        <img  src="/images/bann.png" class="h-full w-full object-cover" alt="...">
+    <div class="xl:px-32">
+        <div class="rounded-lg bg-gray-200 my-2 mx-2 md:h-40 h-24 xl:h-32 w-full ">
+            <img  src="/images/offer.png " class="h-full w-full object-cover rounded-lg" alt="...">
+        </div>
     </div>
     <!-- popular projects -->
-    <div class="w-full mt-3">
+    <div class="w-full mt-3 xl:px-32">
         <div class="flex gap-3 items-center px-2 justify-between">
             <span class=" text-gray-500 md:text-lg">Popular Projects</span>
             <!-- <span class="text-[#1a91ff] text-sm md:text-lg">See All</span> -->
         </div>
-        <div class="mt-3 flex flex-col gap-3 px-2">
+        <div class="">
             <%- include("../user/productslistsub.ejs"); -%>
             
         </div>

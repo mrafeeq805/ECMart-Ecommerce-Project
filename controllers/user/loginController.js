@@ -14,7 +14,7 @@ module.exports = {
         res.redirect('/home')
       }else{
         const otpent = req.body.otp
-        if(123 == otpent){
+        if(req.session.otp == otpent){
           
           req.session.phone = req.session.number
           const check = await userSchema.find({phone:req.session.phone})
@@ -69,13 +69,13 @@ module.exports = {
         req.session.otp = otp
         req.session.number = req.body.phone
         
-        // const response = await fast2sms.sendMessage(
-        //   {
-        //     authorization:process.env.FAST_API,
-        //     message:`${otp} is your otp`,
-        //     numbers:[req.body.phone]
-        //   }
-        // )
+        const response = await fast2sms.sendMessage(
+          {
+            authorization:process.env.FAST_API,
+            message:`${otp} is your otp`,
+            numbers:[req.body.phone]
+          }
+        )
         res.render('./user/otp',{phone:req.body.phone})
 
       }
